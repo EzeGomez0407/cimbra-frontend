@@ -1,12 +1,13 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Alert, StyleSheet, Text, View } from 'react-native';
 import Feather from '@expo/vector-icons/Feather';
-import { Divider, Surface, TextInput } from 'react-native-paper';
+import { Surface, TextInput } from 'react-native-paper';
 import Fontisto from '@expo/vector-icons/Fontisto';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Button } from 'react-native-paper';
 
 import Svg, { Path } from 'react-native-svg';
+import DividerCustomer from './DividerCustomer';
+import { router } from 'expo-router';
 
 const GoogleIcon = ({ size = 20 }) => (
   <Svg width={size} height={size} viewBox="0 0 24 24">
@@ -30,6 +31,11 @@ const GoogleIcon = ({ size = 20 }) => (
 );
 
 export default function Register() {
+
+  const onPressCreateAccount = ()=>{
+    console.log("asdas");
+    router.navigate('/user')
+  }
   return (
     <>
       <View style={{ gap: 5, marginTop: 30 }}>
@@ -102,27 +108,23 @@ export default function Register() {
       </View>
 
       <Surface style={{borderRadius:15, shadowColor: "#c7b75b"}}>
-        <Button 
-          mode='contained'
-          icon={()=><MaterialIcons name="arrow-forward-ios" size={16} color="#225599" />}
-          buttonColor="#FFD700"
-          textColor="#225599"
-          labelStyle={{fontSize: 16}}
-          contentStyle={{height:50, flexDirection: "row-reverse"}}
-          style={{borderRadius:15}}
-          >
-          Crear Cuenta   
-        </Button>
+          <Button 
+            mode='contained'
+            icon={()=><MaterialIcons name="arrow-forward-ios" size={16} color="#225599" />}
+            buttonColor="#FFD700"
+            textColor="#225599"
+            labelStyle={{fontSize: 16}}
+            contentStyle={{height:50, flexDirection: "row-reverse"}}
+            style={{borderRadius:15}}
+            onPress={onPressCreateAccount}
+            >
+            Crear Cuenta   
+          </Button>
       </Surface>
 
-      <View style={styles.contentDivider}>
-        <View style={styles.contentDivider.view}>
-          <Text style={styles.contentDivider.text}>  o continúa con  </Text>
-        </View>
-        <Divider/>
-      </View>
-      
-      <Surface style={{borderRadius:15, shadowColor: "#c7b75b"}}>
+      <DividerCustomer label="o continúa con"/>
+
+      <Surface style={{borderRadius:15, shadowColor: "#c7b75b", marginTop: 10}}>
         <Button 
           mode='contained'
           icon={()=> <GoogleIcon size={22}/>}
@@ -136,12 +138,10 @@ export default function Register() {
         </Button>
       </Surface>
 
-      <View style={styles.viewTextTerminosUso}>
+      <View style={[{...styles.viewTextTerminosUso, marginTop: 30}]}>
         <Text style={styles.viewTextTerminosUso.text}>¿Ya tienes cuenta? </Text>
         <Text style={styles.viewTextTerminosUso.links}>Inicia sesión</Text>
       </View>
-
-      <StatusBar style="auto" />
     </>
   );
 }
@@ -192,20 +192,4 @@ const styles = StyleSheet.create({
         color: "#908c9d",
       },
     },
-    contentDivider: {
-      marginVertical: 15,
-      view: {
-        flex: 1,
-        flexDirection: "row",
-        justifyContent: "center",
-        transform: [{translateY: 7}],
-        zIndex: 1500
-      },
-      text: {
-        zIndex: 2000,
-        backgroundColor: 'white',
-        alignSelf: "flex-start",
-        color: "#908c9d",
-      }
-    }
   });
