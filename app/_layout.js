@@ -1,7 +1,6 @@
 import "../global.css"
 import { Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
 
 export default function RootLayout() {
   return (<>
@@ -10,7 +9,7 @@ export default function RootLayout() {
           headerTitle: "",
           headerLeft: ()=>{}
         }}/>
-        <StatusBar style="auto" />
+        <StatusBar backgroundColor="#FFD700" />
         </>
   );
 }
