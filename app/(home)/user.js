@@ -1,42 +1,56 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
+import ScreenLayout from "../../components/ScreenLayout";
+
 import { Avatar, Surface } from "react-native-paper";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import CustomButton from "../Button/CustomButton";
-import Divider from "../Divider/Divider";
-import AdminSection from "./AdminSection/AdminSection";
-import CardInfo from "./CardInfo/CardInfo";
 
 import Feather from "@expo/vector-icons/Feather";
+import CardInfo from "../../components/postLogin/CardInfo/CardInfo";
+import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
+import Divider from "../../components/Divider/Divider";
+import CustomButton from "../../components/Button/CustomButton";
+import { Stack } from "expo-router";
 
 export default function PostLogin({ name }) {
   //saca iniciales de un nombre
-  const initials = name
+  /* const initials = name
     .split(" ")
     .map((n) => n[0])
-    .join("");
+    .join(""); */
 
   return (
-    <View style={style.containerOne}>
-      {/* header */}
-      <View style={style.sectionHeader}>
-        <View>
-          <Text style={{ color: "#ffd700", fontSize: 16 }}>Bienvenido 👋</Text>
-          <Text style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}>
-            Hola, {!name ? "Juan" : name}
-          </Text>
-        </View>
-        <Surface style={style.surface} elevation={4}>
-          <TouchableOpacity>
-            <Avatar.Text
-              size={45}
-              label={!initials ? "JR" : initials}
-              style={{ backgroundColor: "#ffd600" }}
-            />
-          </TouchableOpacity>
-        </Surface>
-      </View>
+    <ScreenLayout>
+      <Stack.Screen
+        options={{
+          headerStyle: {
+            backgroundColor: "#225599",
+          },
+          headerLeft: () => (
+            <View style={{ paddingVertical: 40 }}>
+              <Text style={{ color: "#ffd700", fontSize: 16 }}>
+                Bienvenido 👋
+              </Text>
+              <Text style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}>
+                Hola, {!name ? "Juan" : name}
+              </Text>
+            </View>
+          ),
+          headerRight: () => (
+            <Surface style={style.surface} elevation={4}>
+              <TouchableOpacity>
+                <Avatar.Text
+                  size={45}
+                  label={"JR"}
+                  style={{ backgroundColor: "#ffd600" }}
+                />
+              </TouchableOpacity>
+            </Surface>
+          ),
+        }}
+      />
+
       {/* Content */}
       <View style={style.sectionContent}>
         {/* Info Card  */}
@@ -64,24 +78,11 @@ export default function PostLogin({ name }) {
         btnCenter={true}
         iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
       />
-    </View>
+    </ScreenLayout>
   );
 }
 
 const style = StyleSheet.create({
-  containerOne: {
-    flex: 1,
-    backgroundColor: "#faf7f0",
-  },
-
-  sectionHeader: {
-    flexDirection: "row",
-    backgroundColor: "#225599",
-    justifyContent: "space-between",
-    paddingHorizontal: 25,
-    paddingVertical: 45,
-    alignContent: "center",
-  },
   surface: {
     borderRadius: 100,
     height: 45,
