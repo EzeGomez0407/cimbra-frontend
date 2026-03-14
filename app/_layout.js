@@ -8,7 +8,7 @@ export default function RootLayout() {
           headerStyle: {backgroundColor: "#FFD700"},
           headerTitle: "",
           headerLeft: ()=>{}
-        }}/> 
+        }}/>
         <StatusBar backgroundColor="#FFD700" />
         </>
   );

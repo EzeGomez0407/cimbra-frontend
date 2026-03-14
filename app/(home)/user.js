@@ -11,7 +11,7 @@ import CardInfo from "../../components/postLogin/CardInfo/CardInfo";
 import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
 import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
-import { Stack } from "expo-router";
+import { Link, router, Stack } from "expo-router";
 
 export default function PostLogin({ name }) {
   //saca iniciales de un nombre
@@ -20,6 +20,10 @@ export default function PostLogin({ name }) {
     .map((n) => n[0])
     .join(""); */
 
+  /*const onPressCreateAccount = ()=>{
+      console.log("asdas");
+      router.navigate('/')
+    }*/
   return (
     <ScreenLayout>
       <Stack.Screen
@@ -73,11 +77,13 @@ export default function PostLogin({ name }) {
         />
       </View>
       {/* btn cerrar sesión */}
-      <CustomButton
-        textBtnCenter={"Cerrar sesión"}
-        btnCenter={true}
-        iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
-      />
+      <Link href="/" asChild>
+        <CustomButton
+          textBtnCenter={"Cerrar sesión"}
+          btnCenter={true}
+          iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
+        />
+        </Link>
     </ScreenLayout>
   );
 }

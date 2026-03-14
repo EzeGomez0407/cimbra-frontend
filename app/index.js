@@ -1,6 +1,6 @@
 import { Stack } from "expo-router";
-import Register from "../../components/Register";
-import ScreenLayout from "../../components/ScreenLayout";
+import Register from "../components/Register";
+import ScreenLayout from "../components/ScreenLayout";
 import { Text } from "react-native";
 
 export default function Index(){

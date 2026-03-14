@@ -41,6 +41,7 @@ export default function CustomButton({
       style={{ alignSelf: "stretch" }}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
+      onPress={onPress}
     >
       {btnCenter ? (
         <Animated.View style={[style.button, { transform: [{ scale }] }]}>
