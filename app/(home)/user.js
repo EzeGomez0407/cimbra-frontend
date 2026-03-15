@@ -14,16 +14,6 @@ import CustomButton from "../../components/Button/CustomButton";
 import { Link, router, Stack } from "expo-router";
 
 export default function PostLogin({ name }) {
-  //saca iniciales de un nombre
-  /* const initials = name
-    .split(" ")
-    .map((n) => n[0])
-    .join(""); */
-
-  /*const onPressCreateAccount = ()=>{
-      console.log("asdas");
-      router.navigate('/')
-    }*/
   return (
     <ScreenLayout>
       <Stack.Screen
@@ -32,7 +22,7 @@ export default function PostLogin({ name }) {
             backgroundColor: "#225599",
           },
           headerLeft: () => (
-            <View style={{ paddingVertical: 40 }}>
+            <View className="my-5 mt-14">
               <Text style={{ color: "#ffd700", fontSize: 16 }}>
                 Bienvenido 👋
               </Text>
@@ -42,7 +32,7 @@ export default function PostLogin({ name }) {
             </View>
           ),
           headerRight: () => (
-            <Surface style={style.surface} elevation={4}>
+            <Surface style={style.surface} elevation={4} className="my-5 mt-14">
               <TouchableOpacity>
                 <Avatar.Text
                   size={45}

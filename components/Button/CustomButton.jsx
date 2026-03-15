@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Pressable, Animated } from "react-native";
-import React, { useRef } from "react";
+import { useRef } from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
