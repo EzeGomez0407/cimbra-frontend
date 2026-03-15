@@ -9,7 +9,9 @@ export default function Index(){
             <Stack.Screen  
                 options={{
                     // headerBackVisible: false
-                    headerLeft: () => (<Text className="text-[24px] font-semibold color-[#225599]">Bienvenido a Cimbra</Text>)
+                    headerLeft: () => (<Text className="text-[24px] font-semibold color-[#225599] my-4 mt-12">
+                        Bienvenido a Cimbra
+                        </Text>)
                 }}
             />
             <Register />
