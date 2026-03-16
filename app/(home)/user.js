@@ -1,4 +1,10 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  ScrollView,
+} from "react-native";
 
 import ScreenLayout from "../../components/ScreenLayout";
 
@@ -12,69 +18,84 @@ import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
 import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
 import { Link, router, Stack } from "expo-router";
+import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
 
 export default function PostLogin({ name }) {
   return (
-    <ScreenLayout>
-      <Stack.Screen
-        options={{
-          headerStyle: {
-            backgroundColor: "#225599",
-          },
-          headerLeft: () => (
-            <View className="my-5 mt-14">
-              <Text style={{ color: "#ffd700", fontSize: 16 }}>
-                Bienvenido 👋
-              </Text>
-              <Text style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}>
-                Hola, {!name ? "Juan" : name}
-              </Text>
-            </View>
-          ),
-          headerRight: () => (
-            <Surface style={style.surface} elevation={4} className="my-5 mt-14">
-              <TouchableOpacity>
-                <Avatar.Text
-                  size={45}
-                  label={"JR"}
-                  style={{ backgroundColor: "#ffd600" }}
-                />
-              </TouchableOpacity>
-            </Surface>
-          ),
-        }}
-      />
-
-      {/* Content */}
-      <View style={style.sectionContent}>
-        {/* Info Card  */}
-        <CardInfo />
-
-        {/* Admin Section */}
-        <AdminSection />
-
-        {/* lineas separadoras */}
-        <Divider text={"también podés"} />
-
-        {/*user button */}
-        <CustomButton
-          bgIcon={"#003466"}
-          bgBtn={"#FFF"}
-          colorTitle={"#225599"}
-          titleBtn={"Mi perfil"}
-          textBtn={"Ver y editar tu información"}
-          icon={<FontAwesome6 name="user-circle" size={20} color="#e5c60b" />}
+    <ScrollView>
+      <ScreenLayout>
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: "#225599",
+            },
+            headerLeft: () => (
+              <View className="my-5 mt-14">
+                <Text style={{ color: "#ffd700", fontSize: 16 }}>
+                  Bienvenido 👋
+                </Text>
+                <Text
+                  style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}
+                >
+                  Hola, {!name ? "Juan" : name}
+                </Text>
+              </View>
+            ),
+            headerRight: () => (
+              <Surface
+                style={style.surface}
+                elevation={4}
+                className="my-5 mt-14"
+              >
+                <TouchableOpacity>
+                  <Avatar.Text
+                    size={45}
+                    label={"JR"}
+                    style={{ backgroundColor: "#ffd600" }}
+                  />
+                </TouchableOpacity>
+              </Surface>
+            ),
+          }}
         />
-      </View>
-      {/* btn cerrar sesión */}
-      <Link href="/" asChild>
+
+        {/* Content */}
+        <View style={style.sectionContent}>
+          {/* Info Card  */}
+          <CardInfo />
+
+          {/* Admin Section */}
+          <AdminSection />
+
+          {/* lineas separadoras */}
+          <Divider text={"o si sos empleado"} />
+
+          {/*Tarjeta de empleados */}
+          <CardEmployee />
+
+          {/* lineas separadoras */}
+          <Divider text={"también podés"} />
+
+          {/*user button */}
+          <CustomButton
+            bgIcon={"#003466"}
+            bgBtn={"#FFF"}
+            colorTitle={"#225599"}
+            titleBtn={"Mi perfil"}
+            textBtn={"Ver y editar tu información"}
+            icon={<FontAwesome6 name="user-circle" size={20} color="#e5c60b" />}
+          />
+        </View>
+        {/* btn cerrar sesión */}
+
         <CustomButton
+          onPress={() => router.push("/")}
           textBtnCenter={"Cerrar sesión"}
           btnCenter={true}
           iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
         />
-        </Link>
-    </ScreenLayout>
+      </ScreenLayout>
+    </ScrollView>
   );
 }
 
