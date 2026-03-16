@@ -20,19 +20,20 @@ export default function PostLogin({ name }) {
         options={{
           headerStyle: {
             backgroundColor: "#225599",
+            color: "#fff"
           },
           headerLeft: () => (
-            <View className="my-5 mt-14">
-              <Text style={{ color: "#ffd700", fontSize: 16 }}>
+            <View className="my-2">
+              <Text className="text-[#ffd700] text-lg">
                 Bienvenido 👋
               </Text>
-              <Text style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}>
+              <Text className="text-white text-3xl font-bold">
                 Hola, {!name ? "Juan" : name}
               </Text>
-            </View>
+            </View> 
           ),
           headerRight: () => (
-            <Surface style={style.surface} elevation={4} className="my-5 mt-14">
+            <Surface style={style.surface} elevation={4} className="my-2">
               <TouchableOpacity>
                 <Avatar.Text
                   size={45}
