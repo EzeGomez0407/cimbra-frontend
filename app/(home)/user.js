@@ -25,39 +25,34 @@ export default function PostLogin({ name }) {
     <ScrollView>
       <ScreenLayout>
         <Stack.Screen
-          options={{
-            headerStyle: {
-              backgroundColor: "#225599",
-            },
-            headerLeft: () => (
-              <View className="my-5 mt-14">
-                <Text style={{ color: "#ffd700", fontSize: 16 }}>
-                  Bienvenido 👋
-                </Text>
-                <Text
-                  style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}
-                >
-                  Hola, {!name ? "Juan" : name}
-                </Text>
-              </View>
-            ),
-            headerRight: () => (
-              <Surface
-                style={style.surface}
-                elevation={4}
-                className="my-5 mt-14"
-              >
-                <TouchableOpacity>
-                  <Avatar.Text
-                    size={45}
-                    label={"JR"}
-                    style={{ backgroundColor: "#ffd600" }}
-                  />
-                </TouchableOpacity>
-              </Surface>
-            ),
-          }}
-        />
+        options={{
+          headerStyle: {
+            backgroundColor: "#225599",
+            color: "#fff"
+          },
+          headerLeft: () => (
+            <View className="my-2">
+              <Text className="text-[#ffd700] text-lg">
+                Bienvenido 👋
+              </Text>
+              <Text className="text-white text-3xl font-bold">
+                Hola, {!name ? "Juan" : name}
+              </Text>
+            </View> 
+          ),
+          headerRight: () => (
+            <Surface style={style.surface} elevation={4} className="my-2">
+              <TouchableOpacity>
+                <Avatar.Text
+                  size={45}
+                  label={"JR"}
+                  style={{ backgroundColor: "#ffd600" }}
+                />
+              </TouchableOpacity>
+            </Surface>
+          ),
+        }}
+      />
 
         {/* Content */}
         <View style={style.sectionContent}>
