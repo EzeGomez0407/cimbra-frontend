@@ -9,6 +9,7 @@ import {
 import ScreenLayout from "../../components/ScreenLayout";
 
 import { Avatar, Surface } from "react-native-paper";
+import { Link, router, Stack } from "expo-router";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
@@ -17,7 +18,6 @@ import CardInfo from "../../components/postLogin/CardInfo/CardInfo";
 import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
 import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
-import { Link, router, Stack } from "expo-router";
 import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
 
 export default function PostLogin({ name }) {
