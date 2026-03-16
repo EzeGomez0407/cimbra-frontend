@@ -5,22 +5,20 @@ import {
   TouchableOpacity,
   ScrollView,
 } from "react-native";
-
 import ScreenLayout from "../../components/ScreenLayout";
-
 import { Avatar, Surface } from "react-native-paper";
 import { Link, router, Stack } from "expo-router";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-
 import Feather from "@expo/vector-icons/Feather";
-import CardInfo from "../../components/postLogin/CardInfo/CardInfo";
-import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
-import Divider from "../../components/Divider/Divider";
-import CustomButton from "../../components/Button/CustomButton";
-import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
 
-export default function PostLogin({ name }) {
+import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
+
+import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
+import CustomButton from "../../components/Button/CustomButton";
+import WelcomeCard from "../../components/employee/welcomeCard/WelcomeCard";
+
+export default function mandated() {
   return (
     <ScrollView>
       <ScreenLayout>
@@ -32,12 +30,12 @@ export default function PostLogin({ name }) {
             headerLeft: () => (
               <View className="my-5 mt-14">
                 <Text style={{ color: "#ffd700", fontSize: 16 }}>
-                  Bienvenido 👋
+                  Encargado
                 </Text>
                 <Text
                   style={{ color: "#fff", fontSize: 24, fontWeight: "bold" }}
                 >
-                  Hola, {!name ? "Juan" : name}
+                  Constructora Demo
                 </Text>
               </View>
             ),
@@ -58,36 +56,32 @@ export default function PostLogin({ name }) {
             ),
           }}
         />
-
-        {/* Content */}
         <View style={style.sectionContent}>
-          {/* Info Card  */}
-          <CardInfo />
-
-          {/* Admin Section */}
-          <AdminSection />
-
-          {/* lineas separadoras */}
-          <Divider text={"o si sos empleado"} />
-
-          {/*Tarjeta de empleados */}
-          <CardEmployee />
-
-          {/* lineas separadoras */}
-          <Divider text={"también podés"} />
-
-          {/*user button */}
-          <CustomButton
-            bgIcon={"#003466"}
-            bgBtn={"#FFF"}
-            colorTitle={"#225599"}
-            titleBtn={"Mi perfil"}
-            textBtn={"Ver y editar tu información"}
-            icon={<FontAwesome6 name="user-circle" size={20} color="#e5c60b" />}
-          />
+          <WelcomeCard />
+          <View>
+            <Text>Acceso rápido</Text>
+            <CustomButton
+              bgIcon={"#003466"}
+              bgBtn={"#FFF"}
+              colorTitle={"#225599"}
+              titleBtn={"Mi perfil"}
+              textBtn={"Ver y editar tu información"}
+              icon={
+                <FontAwesome6 name="user-circle" size={20} color="#e5c60b" />
+              }
+            />
+            <CustomButton
+              bgIcon={"#003466"}
+              bgBtn={"#FFF"}
+              colorTitle={"#225599"}
+              titleBtn={"Mi perfil"}
+              textBtn={"Ver y editar tu información"}
+              icon={
+                <FontAwesome6 name="user-circle" size={20} color="#e5c60b" />
+              }
+            />
+          </View>
         </View>
-        {/* btn cerrar sesión */}
-
         <CustomButton
           onPress={() => router.push("/")}
           textBtnCenter={"Cerrar sesión"}
@@ -98,7 +92,6 @@ export default function PostLogin({ name }) {
     </ScrollView>
   );
 }
-
 const style = StyleSheet.create({
   surface: {
     borderRadius: 100,
