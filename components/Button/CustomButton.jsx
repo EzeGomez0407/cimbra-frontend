@@ -13,35 +13,40 @@ export default function CustomButton({
   btnCenter,
   textBtnCenter,
   iconBtnCenter,
-  onPress,
+  ...props
 }) {
   //animaciones de boton
   const scale = useRef(new Animated.Value(1)).current;
 
-  const onPressIn = () => {
+  const onPressIn = (e) => {
     Animated.spring(scale, {
       toValue: 0.96,
       friction: 6,
       tension: 100,
       useNativeDriver: true,
     }).start();
+
+    // IMPORTANTE: Si el usuario pasó un onPressIn por fuera, lo ejecutamos también
+    if (props.onPressIn) props.onPressIn(e);
   };
 
-  const onPressOut = () => {
+  const onPressOut = (e) => {
     Animated.spring(scale, {
       toValue: 1,
       friction: 6,
       tension: 100,
       useNativeDriver: true,
     }).start();
+
+    if (props.onPressOut) props.onPressOut(e);
   };
 
   return (
     <Pressable
       style={{ alignSelf: "stretch" }}
+      {...props}
       onPressIn={onPressIn}
       onPressOut={onPressOut}
-      onPress={onPress}
     >
       {btnCenter ? (
         <Animated.View style={[style.button, { transform: [{ scale }] }]}>

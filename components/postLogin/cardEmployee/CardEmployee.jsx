@@ -9,7 +9,7 @@ export default function CardEmployee() {
 
   const handleLogin = () => {
     console.log(key);
-    router.push("/mandated");
+    router.navigate("/employee/mandated");
   };
 
   return (
