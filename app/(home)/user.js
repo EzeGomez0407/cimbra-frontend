@@ -1,15 +1,9 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import ScreenLayout from "../../components/ScreenLayout";
 
 import { Avatar, Surface } from "react-native-paper";
-import { Link, router, Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 
@@ -20,39 +14,39 @@ import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
 import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
 
+import KeyboardLayout from "../../components/layout/KeyboardLayout";
+
 export default function PostLogin({ name }) {
   return (
-    <ScrollView>
+    <KeyboardLayout>
       <ScreenLayout>
         <Stack.Screen
-        options={{
-          headerStyle: {
-            backgroundColor: "#225599",
-            color: "#fff"
-          },
-          headerLeft: () => (
-            <View className="my-2">
-              <Text className="text-[#ffd700] text-lg">
-                Bienvenido 👋
-              </Text>
-              <Text className="text-white text-3xl font-bold">
-                Hola, {!name ? "Juan" : name}
-              </Text>
-            </View> 
-          ),
-          headerRight: () => (
-            <Surface style={style.surface} elevation={4} className="my-2">
-              <TouchableOpacity>
-                <Avatar.Text
-                  size={45}
-                  label={"JR"}
-                  style={{ backgroundColor: "#ffd600" }}
-                />
-              </TouchableOpacity>
-            </Surface>
-          ),
-        }}
-      />
+          options={{
+            headerStyle: {
+              backgroundColor: "#225599",
+              color: "#fff",
+            },
+            headerLeft: () => (
+              <View className="my-2">
+                <Text className="text-[#ffd700] text-lg">Bienvenido 👋</Text>
+                <Text className="text-white text-3xl font-bold">
+                  Hola, {!name ? "Juan" : name}
+                </Text>
+              </View>
+            ),
+            headerRight: () => (
+              <Surface style={style.surface} elevation={4} className="my-2">
+                <TouchableOpacity>
+                  <Avatar.Text
+                    size={45}
+                    label={"JR"}
+                    style={{ backgroundColor: "#ffd600" }}
+                  />
+                </TouchableOpacity>
+              </Surface>
+            ),
+          }}
+        />
 
         {/* Content */}
         <View style={style.sectionContent}>
@@ -90,7 +84,7 @@ export default function PostLogin({ name }) {
           iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
         />
       </ScreenLayout>
-    </ScrollView>
+    </KeyboardLayout>
   );
 }
 

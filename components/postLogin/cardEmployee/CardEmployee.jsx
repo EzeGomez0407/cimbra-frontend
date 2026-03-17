@@ -56,7 +56,7 @@ export default function CardEmployee() {
 
 const style = StyleSheet.create({
   card: {
-    flex: 1,
+    
     borderWidth: 0.1,
     borderColor: "#f3d73e",
     backgroundColor: "#fff",

@@ -1,15 +1,7 @@
-import {
-  StyleSheet,
-  Text,
-  View,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import ScreenLayout from "../../components/ScreenLayout";
 import { Avatar, Surface } from "react-native-paper";
 import { router, Stack } from "expo-router";
-
-import { useSafeAreaInsets } from "react-native-safe-area-context";
 
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import Feather from "@expo/vector-icons/Feather";
@@ -18,17 +10,11 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import CustomButton from "../../components/Button/CustomButton";
 import WelcomeCard from "../../components/employee/welcomeCard/WelcomeCard";
 import Divider from "../../components/Divider/Divider";
+import SafeLayout from "../../components/layout/SafeLayout";
 
 export default function mandated() {
-  const insets = useSafeAreaInsets();
   return (
-    <ScrollView
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: "space-between",
-        paddingBottom: insets.bottom,
-      }}
-    >
+    <SafeLayout withHeader={true}>
       <ScreenLayout>
         <Stack.Screen
           options={{
@@ -116,7 +102,7 @@ export default function mandated() {
           iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
         />
       </ScreenLayout>
-    </ScrollView>
+    </SafeLayout>
   );
 }
 const style = StyleSheet.create({
@@ -136,7 +122,8 @@ const style = StyleSheet.create({
   sectionContent: {
     flex: 1,
     alignItems: "center",
-    padding: 20,
+    paddingHorizontal: 20,
+
     gap: 20,
   },
   title: {
