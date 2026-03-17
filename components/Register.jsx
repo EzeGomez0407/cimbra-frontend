@@ -9,6 +9,7 @@ import { router } from "expo-router";
 import { GoogleIcon } from "../logos/logos";
 import { useState } from "react";
 import { validateUserRegister } from "../utils/validations";
+import BasicInputs from "./Inputs/BasicInputs";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -87,19 +88,11 @@ export default function Register() {
         <Text className=" text-red-600">{errorDataUser.name}</Text>
 
         {/* INPUT LASTNAMES */}
-        <TextInput
+        <BasicInputs
           onChangeText={(value) => onChange("lastname", value)}
-          mode="outlined"
-          label={
-            <Text style={styles.labelInputs}>
-              <Feather name="user" size={20} color="#FFD700" /> Apellido
-            </Text>
-          }
-          placeholder="Tu apellido"
-          placeholderTextColor="#9e9e9e"
-          outlineColor="#c7b75b"
-          activeOutlineColor="#FFD700"
-          outlineStyle={{ borderRadius: 14 }}
+          label={"Apellido"}
+          leftIcon={<Feather name="user" size={20} color="#FFD700" />}
+          placeholder={"Tu apellido"}
         />
         <Text className=" text-red-600">{errorDataUser.lastname}</Text>
 
