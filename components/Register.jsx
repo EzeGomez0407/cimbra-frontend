@@ -9,6 +9,7 @@ import { router } from "expo-router";
 import { GoogleIcon } from "../logos/logos";
 import { useState } from "react";
 import { validateUserRegister } from "../utils/validations";
+import BasicInputs from "./Inputs/BasicInputs";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -17,19 +18,25 @@ export default function Register() {
     email: "",
     password: "",
   });
+
   const [errorDataUser, setErrorDataUser] = useState({
     name: "",
     lastname: "",
     email: "",
     password: "",
   });
+
   const onChange = (propName, value) => {
     setUserData((data) => ({
       ...data,
       [propName]: value,
     }));
   };
+
   const onPressCreateAccount = () => {
+    // Para Desarrollo
+    return router.navigate("/user");
+    // ==========================
     setErrorDataUser({
       name: "",
       lastname: "",
@@ -43,7 +50,7 @@ export default function Register() {
         setErrorDataUser((err) => ({
           ...err,
           [error.name]: error.message,
-        }))
+        })),
       );
     } else {
       return router.navigate("/user");
@@ -63,73 +70,38 @@ export default function Register() {
 
       <View className="mt-3xl gap-2">
         {/* INPUT NAMES */}
-        <TextInput
+        <BasicInputs
           onChangeText={(value) => onChange("name", value)}
-          mode="outlined"
-          label={
-            <Text style={styles.labelInputs}>
-              <Feather name="user" size={20} color="#FFD700" /> Nombre
-            </Text>
-          }
-          placeholder="Tu nombre"
-          placeholderTextColor="#9e9e9e"
-          outlineColor="#c7b75b"
-          activeOutlineColor="#FFD700"
-          outlineStyle={{ borderRadius: 14 }}
+          label={"Nombre"}
+          leftIcon={<Feather name="user" size={20} color="#FFD700" />}
+          placeholder={"Tu nombre"}
         />
-
         <Text className=" text-red-600">{errorDataUser.name}</Text>
 
         {/* INPUT LASTNAMES */}
-        <TextInput
+        <BasicInputs
           onChangeText={(value) => onChange("lastname", value)}
-          mode="outlined"
-          label={
-            <Text style={styles.labelInputs}>
-              <Feather name="user" size={20} color="#FFD700" /> Apellido
-            </Text>
-          }
-          placeholder="Tu apellido"
-          placeholderTextColor="#9e9e9e"
-          outlineColor="#c7b75b"
-          activeOutlineColor="#FFD700"
-          outlineStyle={{ borderRadius: 14 }}
+          label={"Apellido"}
+          leftIcon={<Feather name="user" size={20} color="#FFD700" />}
+          placeholder={"Tu apellido"}
         />
         <Text className=" text-red-600">{errorDataUser.lastname}</Text>
 
         {/* INPUT EMAIL */}
-        <TextInput
+        <BasicInputs
           onChangeText={(value) => onChange("email", value)}
-          mode="outlined"
-          label={
-            <Text style={styles.labelInputs}>
-              <Fontisto name="email" size={20} color="#FFD700" /> Correo
-              electrónico
-            </Text>
-          }
-          placeholder="tucorreo@mail.com"
-          placeholderTextColor="#9e9e9e"
-          outlineColor="#c7b75b"
-          activeOutlineColor="#FFD700"
-          outlineStyle={{ borderRadius: 14 }}
+          label={"Correo electrónico"}
+          leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
+          placeholder={"tucorreo@mail.com"}
         />
         <Text className=" text-red-600">{errorDataUser.email}</Text>
 
         {/* INPUT PASSWORD */}
-        <TextInput
+        <BasicInputs
           onChangeText={(value) => onChange("password", value)}
-          mode="outlined"
-          label={
-            <Text style={styles.labelInputs}>
-              <Feather name="lock" size={20} color="#FFD700" /> Contraseña
-            </Text>
-          }
-          placeholder="Mínimo 8 caracteres"
-          placeholderTextColor="#9e9e9e"
-          outlineColor="#c7b75b"
-          activeOutlineColor="#FFD700"
-          outlineStyle={{ borderRadius: 14 }}
-          secureTextEntry
+          label={"Contraseña"}
+          leftIcon={<Feather name="lock" size={20} color="#FFD700" />}
+          placeholder={"Mínimo 8 caracteres"}
           right={<TextInput.Icon icon="eye" />}
         />
         <Text className=" text-red-600">{errorDataUser.password}</Text>
