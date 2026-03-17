@@ -1,6 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
 import CustomButton from "../../Button/CustomButton";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { router } from "expo-router";
 export default function AdminSection() {
   return (
     <View style={style.content}>
@@ -13,6 +14,7 @@ export default function AdminSection() {
       </Text>
 
       <CustomButton
+        onPress={() => router.navigate("/admin/create-company")}
         bgIcon={"#e5c60b"}
         bgBtn={"#FFD600"}
         colorTitle={"#225599"}

@@ -17,19 +17,25 @@ export default function Register() {
     email: "",
     password: "",
   });
+
   const [errorDataUser, setErrorDataUser] = useState({
     name: "",
     lastname: "",
     email: "",
     password: "",
   });
+
   const onChange = (propName, value) => {
     setUserData((data) => ({
       ...data,
       [propName]: value,
     }));
   };
+
   const onPressCreateAccount = () => {
+    // Para Desarrollo
+    return router.navigate("/user");
+    // ==========================
     setErrorDataUser({
       name: "",
       lastname: "",
@@ -43,7 +49,7 @@ export default function Register() {
         setErrorDataUser((err) => ({
           ...err,
           [error.name]: error.message,
-        }))
+        })),
       );
     } else {
       return router.navigate("/user");
