@@ -1,0 +1,14 @@
+import { View } from "react-native";
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+export default function ScreenLayout({ children, style, withHeader = false }) {
+  const insets = useSafeAreaInsets();
+  return (
+    <View
+      className="px-4 flex-1"
+      style={{ flex: 1, marginBottom: insets.bottom }}
+    >
+      {children}
+    </View>
+  );
+}

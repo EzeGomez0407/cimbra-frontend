@@ -9,7 +9,8 @@ import { router } from "expo-router";
 import { GoogleIcon } from "../logos/logos";
 import { useState } from "react";
 import { validateUserRegister } from "../utils/validations";
-import BasicInputs from "./Inputs/BasicInputs";
+import BasicInputs from "./to-forms/BasicInputs";
+import BasicMsgError from "./to-forms/BasicMsgError";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -68,7 +69,7 @@ export default function Register() {
         </Text>
       </View>
 
-      <View className="mt-3xl gap-2">
+      <View className="mt-3xl gap-0">
         {/* INPUT NAMES */}
         <BasicInputs
           onChangeText={(value) => onChange("name", value)}
@@ -76,7 +77,7 @@ export default function Register() {
           leftIcon={<Feather name="user" size={20} color="#FFD700" />}
           placeholder={"Tu nombre"}
         />
-        <Text className=" text-red-600">{errorDataUser.name}</Text>
+        <BasicMsgError msg={errorDataUser.name} />
 
         {/* INPUT LASTNAMES */}
         <BasicInputs
@@ -85,7 +86,7 @@ export default function Register() {
           leftIcon={<Feather name="user" size={20} color="#FFD700" />}
           placeholder={"Tu apellido"}
         />
-        <Text className=" text-red-600">{errorDataUser.lastname}</Text>
+        <BasicMsgError msg={errorDataUser.lastname} />
 
         {/* INPUT EMAIL */}
         <BasicInputs
@@ -94,7 +95,7 @@ export default function Register() {
           leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
           placeholder={"tucorreo@mail.com"}
         />
-        <Text className=" text-red-600">{errorDataUser.email}</Text>
+        <BasicMsgError msg={errorDataUser.email} />
 
         {/* INPUT PASSWORD */}
         <BasicInputs
@@ -104,7 +105,7 @@ export default function Register() {
           placeholder={"Mínimo 8 caracteres"}
           right={<TextInput.Icon icon="eye" />}
         />
-        <Text className=" text-red-600">{errorDataUser.password}</Text>
+        <BasicMsgError msg={errorDataUser.password} />
       </View>
       <View style={styles.viewTextTerminosUso}>
         <Text style={styles.viewTextTerminosUso.text}>
@@ -153,7 +154,7 @@ export default function Register() {
         </Button>
       </Surface>
 
-      <View style={[{ ...styles.viewTextTerminosUso, marginTop: 30 }]}>
+      <View style={[{ ...styles.viewTextTerminosUso, marginTop: 20 }]}>
         <Text style={styles.viewTextTerminosUso.text}>¿Ya tienes cuenta? </Text>
         <Text style={styles.viewTextTerminosUso.links}>Inicia sesión</Text>
       </View>

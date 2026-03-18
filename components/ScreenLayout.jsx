@@ -1,9 +1,0 @@
-import { View } from "react-native";
-
-export default function ScreenLayout({ children }) {
-  return (
-      <View className="px-3 " style={{ flex: 1}}>
-        {children}
-      </View>
-  );
-}
