@@ -8,6 +8,7 @@ export default function KeyboardLayout({ children, style }) {
   return (
     <KeyboardAvoidingView style={{ flex: 1 }} behavior={"height"}>
       <ScrollView
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={[
           {
             flexGrow: 1,

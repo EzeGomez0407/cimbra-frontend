@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
-import ScreenLayout from "../../components/ScreenLayout";
+import ScreenLayout from "../../components/layout/ScreenLayout";
 
 import { Avatar, Surface } from "react-native-paper";
 import { router, Stack } from "expo-router";
@@ -18,8 +18,8 @@ import KeyboardLayout from "../../components/layout/KeyboardLayout";
 
 export default function PostLogin({ name }) {
   return (
-    <KeyboardLayout>
-      <ScreenLayout>
+    <ScreenLayout>
+      <KeyboardLayout>
         <Stack.Screen
           options={{
             headerStyle: {
@@ -83,8 +83,8 @@ export default function PostLogin({ name }) {
           btnCenter={true}
           iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
         />
-      </ScreenLayout>
-    </KeyboardLayout>
+      </KeyboardLayout>
+    </ScreenLayout>
   );
 }
 

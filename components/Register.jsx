@@ -68,7 +68,7 @@ export default function Register() {
         </Text>
       </View>
 
-      <View className="mt-3xl gap-2">
+      <View className="mt-3xl gap-0">
         {/* INPUT NAMES */}
         <BasicInputs
           onChangeText={(value) => onChange("name", value)}
@@ -153,7 +153,7 @@ export default function Register() {
         </Button>
       </Surface>
 
-      <View style={[{ ...styles.viewTextTerminosUso, marginTop: 30 }]}>
+      <View style={[{ ...styles.viewTextTerminosUso, marginTop: 20 }]}>
         <Text style={styles.viewTextTerminosUso.text}>¿Ya tienes cuenta? </Text>
         <Text style={styles.viewTextTerminosUso.links}>Inicia sesión</Text>
       </View>
