@@ -1,5 +1,5 @@
 import { Text, View } from "react-native";
-import ScreenLayout from "../../components/ScreenLayout";
+import ScreenLayout from "../../components/layout/ScreenLayout";
 import { Stack } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 

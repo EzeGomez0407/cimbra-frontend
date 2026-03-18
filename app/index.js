@@ -1,6 +1,7 @@
 import { Stack } from "expo-router";
 import Register from "../components/Register";
 import ScreenLayout from "../components/layout/ScreenLayout";
+import KeyboardLayout from "../components/layout/KeyboardLayout";
 import { Text } from "react-native";
 
 export default function Index() {
@@ -15,7 +16,9 @@ export default function Index() {
           ),
         }}
       />
-      <Register />
+      <KeyboardLayout>
+        <Register />
+      </KeyboardLayout>
     </ScreenLayout>
   );
 }
