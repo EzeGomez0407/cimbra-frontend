@@ -12,8 +12,6 @@ import CardInfo from "../../components/postLogin/CardInfo/CardInfo";
 import AdminSection from "../../components/postLogin/AdminSection/AdminSection";
 import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
-import CardEmployee from "../../components/postLogin/cardEmployee/CardEmployee";
-
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
 
 export default function PostLogin({ name }) {
@@ -102,5 +100,107 @@ const style = StyleSheet.create({
     alignItems: "center",
     padding: 20,
     gap: 20,
+  },
+});
+
+/*===============Tarjeta de ingreso de clave de acceso de empleado============*/
+import { useState } from "react";
+import { Button, TextInput } from "react-native-paper";
+
+function CardEmployee() {
+  const [key, setKey] = useState("");
+
+  const handleLogin = () => {
+    console.log(key);
+    router.navigate("/employee/mandated");
+  };
+
+  return (
+    <View style={cardEmployeeStyle.card}>
+      <View style={cardEmployeeStyle.contentOne}>
+        <Feather
+          name="key"
+          size={20}
+          color="#fff"
+          style={cardEmployeeStyle.icon}
+        />
+        <View style={cardEmployeeStyle.contentOneText}>
+          <Text style={cardEmployeeStyle.title}>Unirse a una empresa</Text>
+          <Text style={cardEmployeeStyle.text}>Ingresá tu clave de acceso</Text>
+        </View>
+      </View>
+
+      <View style={{ flexDirection: "row", gap: 10 }}>
+        <TextInput
+          placeholder="Clave de acceso"
+          value={key}
+          onChangeText={setKey}
+          mode="outlined"
+          placeholderTextColor="#9e9e9e"
+          outlineColor="#c7b75b"
+          activeOutlineColor="#FFD700"
+          style={{ flex: 1 }}
+          outlineStyle={{ borderRadius: 15 }}
+        />
+
+        <Button
+          onPress={handleLogin}
+          contentStyle={{ flexDirection: "row-reverse", height: 50 }}
+          textColor={"#fff"}
+          style={{
+            borderRadius: 12,
+            backgroundColor: "#225599",
+            borderRadius: 15,
+            justifyContent: "center",
+          }}
+          icon="arrow-right"
+        >
+          Entrar
+        </Button>
+      </View>
+    </View>
+  );
+}
+// Estilos de CardEmployee
+const cardEmployeeStyle = StyleSheet.create({
+  card: {
+    borderWidth: 0.1,
+    borderColor: "#f3d73e",
+    backgroundColor: "#fff",
+    borderRadius: 20,
+    padding: 20,
+    elevation: 5,
+    alignSelf: "stretch",
+  },
+  contentOne: {
+    flexDirection: "row",
+    gap: 15,
+    paddingBottom: 15,
+  },
+  icon: {
+    padding: 10,
+    backgroundColor: "#405c4e",
+    borderRadius: 15,
+    height: 40,
+    width: 40,
+    textAlign: "center",
+  },
+  contentOneText: {
+    flex: 1,
+    gap: 5,
+  },
+
+  title: {
+    fontSize: 16,
+    color: "#225599",
+    fontWeight: "light",
+  },
+
+  text: {
+    fontSize: 12,
+  },
+  contentTwo: {
+    flex: 1,
+    gap: 5,
   },
 });
