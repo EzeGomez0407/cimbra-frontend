@@ -5,7 +5,7 @@ export default function KeyboardLayout({ children, style }) {
   const insets = useSafeAreaInsets();
 
   return (
-    <KeyboardAvoidingView style={{ flex: 1 }} behavior={"height"}>
+    <KeyboardAvoidingView className="" behavior={"height"}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[
