@@ -12,7 +12,7 @@ import Divider from "../../components/Divider/Divider";
 
 export default function mandated() {
   return (
-    <ScreenLayout withHeader={true}>
+    <ScreenLayout>
       <Stack.Screen
         options={{
           headerStyle: {

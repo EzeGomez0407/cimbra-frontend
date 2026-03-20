@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Pressable, Animated } from "react-native";
+import { StyleSheet, Text, View, Pressable, Animated, TouchableOpacity } from "react-native";
 import { useRef } from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -84,6 +84,61 @@ export default function CustomButton({
   );
 }
 
+export function CTAButton({ title, icon, bgBtn, onPress, iconTwo, ...props }) {
+  //animaciones de boton
+  const scale = useRef(new Animated.Value(1)).current;
+
+  const onPressIn = (e) => {
+    Animated.spring(scale, {
+      toValue: 0.96,
+      friction: 6,
+      tension: 100,
+      useNativeDriver: true,
+    }).start();
+
+    // IMPORTANTE: Si el usuario pasó un onPressIn por fuera, lo ejecutamos también
+    if (props.onPressIn) props.onPressIn(e);
+  };
+
+  const onPressOut = (e) => {
+    Animated.spring(scale, {
+      toValue: 1,
+      friction: 6,
+      tension: 100,
+      useNativeDriver: true,
+    }).start();
+
+    if (props.onPressOut) props.onPressOut(e);
+  };
+  return (
+    <Pressable
+      {...props}
+      onPressIn={onPressIn}
+      onPressOut={onPressOut}
+      style={[{ alignSelf: "stretch" }]}
+    >
+      <Animated.View
+        style={[
+          {
+            backgroundColor: bgBtn,
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: 15,
+            borderRadius: 15,
+            gap: 10,
+            transform: [{ scale }],
+          },
+        ]}
+      >
+        {icon}
+        <Text style={{ color: "#fff", fontWeight: "bold" }}>{title}</Text>
+        {iconTwo}
+      </Animated.View>
+    </Pressable>
+  );
+}
+
 const style = StyleSheet.create({
   button: {
     borderRadius: 16,
@@ -121,3 +176,52 @@ const style = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+  
+
+
+export function QuickCard({ title, icon, bg }) {
+  return (
+    <TouchableOpacity style={styles.card}>
+      <View style={[styles.iconBox, { backgroundColor: bg }]}>
+        {icon}
+      </View>
+
+      <Text style={styles.cardText}>{title}</Text>
+    </TouchableOpacity>
+  );
+}
+
+const styles = {
+  grid: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+  },
+
+  card: {
+    width: "48%",
+    height: 130,
+    backgroundColor: "#f2f2f2",
+    borderRadius: 20,
+    borderWidth: 1,
+    borderColor: "#e6d89c",
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+
+  iconBox: {
+    width: 45,
+    height: 45,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    marginBottom: 10,
+  },
+
+  cardText: {
+    color: "#003366",
+    fontWeight: "500",
+  },
+};
