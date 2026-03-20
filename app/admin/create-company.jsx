@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import ScreenLayout from "../../components/layout/ScreenLayout";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import BasicInputs from "../../components/to-forms/BasicInputs";
@@ -78,6 +78,7 @@ export default function CreateCompany() {
           labelStyle={{ fontSize: 16 }}
           contentStyle={{ height: 50, flexDirection: "row-reverse" }}
           style={{ borderRadius: 15 }}
+          onPress={() => router.navigate("/admin/panel-admin")}
         >
           Registrar Empresa
         </Button>

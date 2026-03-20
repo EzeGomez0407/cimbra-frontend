@@ -148,7 +148,7 @@ export default function Register() {
           labelStyle={{ fontSize: 16 }}
           contentStyle={{ height: 50 }}
           style={{ borderRadius: 15, borderWidth: 1, borderColor: "#c7b75b" }}
-          onPress={() => router.push("/user")}
+          onPress={() => router.push("/first-login")}
         >
           Registrarse con Google
         </Button>
