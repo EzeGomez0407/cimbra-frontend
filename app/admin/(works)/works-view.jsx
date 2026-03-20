@@ -62,7 +62,15 @@ export default function WorksView() {
           ),
         }}
       />
-      <ScrollView>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{
+          paddingHorizontal: 20,
+          flexDirection: "column",
+          alignItems: "center",
+          paddingBottom: 20,
+        }}
+      >
         <Surface
           style={{ shadowColor: "#c7b75b" }}
           className="mt-8 rounded-[15px] w-[350px]"
@@ -105,6 +113,7 @@ function CardWork({ name, mandated, alerts }) {
         flexDirection: "row",
         alignItems: "center",
         gap: 10,
+        width: "100%",
       }}
     >
       <View className="self-start p-2 bg-[#225599] rounded-2xl">
