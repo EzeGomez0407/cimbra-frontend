@@ -1,6 +1,6 @@
 import { Text, View } from "react-native";
 import ScreenLayout from "../../components/layout/ScreenLayout";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import SimpleLineIcons from "@expo/vector-icons/SimpleLineIcons";
 import BasicInputs from "../../components/to-forms/BasicInputs";
@@ -69,6 +69,7 @@ export default function CreateCompany() {
 
       <Surface style={{ borderRadius: 15, shadowColor: "#c7b75b" }}>
         <Button
+          onPress={() => router.navigate("/admin/works-view")}
           mode="contained"
           icon={() => (
             <MaterialIcons name="arrow-forward-ios" size={16} color="#225599" />

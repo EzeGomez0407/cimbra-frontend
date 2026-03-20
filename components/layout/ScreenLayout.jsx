@@ -5,8 +5,7 @@ export default function ScreenLayout({ children }) {
   const insets = useSafeAreaInsets();
   return (
     <View
-      className="px-4 flex-1"
-      style={{ flex: 1, marginBottom: insets.bottom }}
+      style={{ flex: 1, marginBottom: insets.bottom, paddingHorizontal: 20 }}
     >
       {children}
     </View>
