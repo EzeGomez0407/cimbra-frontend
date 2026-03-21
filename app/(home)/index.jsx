@@ -107,7 +107,7 @@ export default function Index() {
                   borderWidth: 1,
                   borderColor: "#c7b75b",
                 }}
-                onPress={() => router.navigate("/first-login")}
+                onPress={() => router.navigate("/admin/panel")}
               >
                 Inicia con Google
               </Button>
