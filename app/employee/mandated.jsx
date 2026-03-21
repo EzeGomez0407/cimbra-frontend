@@ -8,12 +8,11 @@ import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import CustomButton from "../../components/Button/CustomButton";
-import WelcomeCard from "../../components/employee/welcomeCard/WelcomeCard";
 import Divider from "../../components/Divider/Divider";
 
 export default function mandated() {
   return (
-    <ScreenLayout withHeader={true}>
+    <ScreenLayout>
       <Stack.Screen
         options={{
           headerStyle: {
@@ -122,5 +121,64 @@ const style = StyleSheet.create({
   title: {
     fontSize: 16,
     color: "#225599",
+  },
+});
+
+function WelcomeCard() {
+  return (
+    <View style={styleWelcomeCard.card}>
+      <View style={styleWelcomeCard.contentOne}>
+        <MaterialCommunityIcons
+          name="office-building-outline"
+          size={20}
+          color="#ffd700"
+          style={styleWelcomeCard.icon}
+        />
+        <View style={styleWelcomeCard.contentOneText}>
+          <Text style={styleWelcomeCard.title}>¡Bienvenido al equipo!</Text>
+          <Text style={styleWelcomeCard.text}>
+            Tenés acceso a las obras y herramientas de Constructora Demo
+          </Text>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const styleWelcomeCard = StyleSheet.create({
+  card: {
+    borderWidth: 0.1,
+    borderColor: "#f3d73e",
+    backgroundColor: "#ffd700",
+    borderRadius: 20,
+    padding: 20,
+    elevation: 5,
+    alignSelf: "stretch",
+  },
+  contentOne: {
+    flexDirection: "row",
+    gap: 15,
+  },
+  icon: {
+    padding: 10,
+    backgroundColor: "#225599",
+    borderRadius: 15,
+    height: 40,
+    width: 40,
+    textAlign: "center",
+  },
+  contentOneText: {
+    flex: 1,
+    gap: 5,
+  },
+
+  title: {
+    fontSize: 16,
+    color: "#225599",
+    fontWeight: "light",
+  },
+
+  text: {
+    fontSize: 12,
   },
 });
