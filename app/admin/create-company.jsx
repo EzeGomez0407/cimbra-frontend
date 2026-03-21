@@ -71,7 +71,7 @@ export default function CreateCompany() {
 
         <Surface style={{ borderRadius: 15, shadowColor: "#c7b75b" }}>
           <Button
-            onPress={() => router.navigate("/admin/works-view")}
+            onPress={() => router.navigate("/admin/panel")}
             mode="contained"
             icon={() => (
               <MaterialIcons

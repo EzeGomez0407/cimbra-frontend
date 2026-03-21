@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Pressable, Animated, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
 import { useRef } from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -177,15 +184,10 @@ const style = StyleSheet.create({
   },
 });
 
-  
-
-
-export function QuickCard({ title, icon, bg }) {
+export function QuickCard({ title, icon, bg, ...props }) {
   return (
-    <TouchableOpacity style={styles.card}>
-      <View style={[styles.iconBox, { backgroundColor: bg }]}>
-        {icon}
-      </View>
+    <TouchableOpacity style={styles.card} {...props}>
+      <View style={[styles.iconBox, { backgroundColor: bg }]}>{icon}</View>
 
       <Text style={styles.cardText}>{title}</Text>
     </TouchableOpacity>
