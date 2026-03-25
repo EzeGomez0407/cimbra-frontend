@@ -36,7 +36,7 @@ export default function PostLogin({ name }) {
                   <Avatar.Text
                     size={45}
                     label={"JR"}
-                    style={{ backgroundColor: "#ffd600" }}
+                    style={{ backgroundColor: "#ffd700" }}
                   />
                 </TouchableOpacity>
               </Surface>
@@ -61,8 +61,8 @@ export default function PostLogin({ name }) {
 
             <CustomButton
               onPress={() => router.navigate("/admin/create-company")}
-              bgIcon={"#e5c60b"}
-              bgBtn={"#FFD600"}
+              bgIcon={"#c7b75b"}
+              bgBtn={"#FFD700"}
               colorTitle={"#225599"}
               titleBtn={"Soy administrador"}
               textBtn={"Registrá o gestioná tu empresa"}
@@ -88,12 +88,12 @@ export default function PostLogin({ name }) {
           {/*user button */}
           <CustomButton
             onPress={() => router.navigate("/user-profile")}
-            bgIcon={"#003466"}
+            bgIcon={"#225599"}
             bgBtn={"#FFF"}
             colorTitle={"#225599"}
             titleBtn={"Mi perfil"}
             textBtn={"Ver y editar tu información"}
-            icon={<FontAwesome6 name="user-circle" size={20} color="#e5c60b" />}
+            icon={<FontAwesome6 name="user-circle" size={20} color="#FFD700" />}
           />
         </View>
         {/* btn cerrar sesión */}
@@ -180,7 +180,7 @@ function CardInfo() {
 const styleCardInfo = StyleSheet.create({
   card: {
     borderWidth: 0.1,
-    borderColor: "#f3d73e",
+    borderColor: "#FFD700",
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 20,
@@ -191,7 +191,7 @@ const styleCardInfo = StyleSheet.create({
     flexDirection: "row",
     gap: 15,
     paddingBottom: 15,
-    borderColor: "#f3d73e",
+    borderColor: "#FFD700",
     borderBottomWidth: 1,
   },
   icon: {
@@ -221,7 +221,7 @@ const styleCardInfo = StyleSheet.create({
     width: 6,
     height: 6,
     borderRadius: 3,
-    backgroundColor: "#f3d73e",
+    backgroundColor: "#FFD700",
     marginRight: 8,
   },
 });
@@ -288,7 +288,7 @@ function CardEmployee() {
 const cardEmployeeStyle = StyleSheet.create({
   card: {
     borderWidth: 0.1,
-    borderColor: "#f3d73e",
+    borderColor: "#FFD700",
     backgroundColor: "#fff",
     borderRadius: 20,
     padding: 20,

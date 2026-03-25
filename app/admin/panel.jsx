@@ -75,7 +75,7 @@ export default function panelAdmin() {
         {/* Company card */}
         <View style={styles.companyCard} className="rounded-3xl p-5 shadow-lg">
           <View className="flex-row gap-5 mb-4 items-start">
-            <View className="flex-row items-center bg-[#225599] p-3 rounded-2xl">
+            <View className="flex-row items-center bg-blue-primary p-3 rounded-2xl">
               <MaterialCommunityIcons
                 name="office-building-outline"
                 size={28}
@@ -83,11 +83,11 @@ export default function panelAdmin() {
               />
             </View>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
-              <Text className="text-base text-[#908c9d]">Tu empresa</Text>
-              <Text className="text-3xl font-semibold text-[#225599]">
+              <Text className="text-base text-placeholder">Tu empresa</Text>
+              <Text className="text-3xl font-semibold text-blue-primary">
                 3Dverse
               </Text>
-              <Text className="text-base text-[#908c9d]">Administrador</Text>
+              <Text className="text-base text-placeholder">Administrador</Text>
             </View>
           </View>
 
@@ -106,7 +106,7 @@ export default function panelAdmin() {
         </View>
 
         {/* Quick access */}
-        <View style={{ color: "#225599", gap: 10 }}>
+        <View className="text-blue-primary gap-3">
           <Text style={{ color: "#225599" }}>Acceso rápido</Text>
           <View className="flex flex-row flex-wrap justify-between gap-y-4">
             <View className="w-[48%] h-[170px]">
@@ -114,7 +114,7 @@ export default function panelAdmin() {
                 onPress={() => router.navigate("/admin/works-view")}
                 title="Obras"
                 icon={
-                  <FontAwesome name="building-o" size={24} color="#ffd600" />
+                  <FontAwesome name="building-o" size={24} color="#ffd700" />
                 }
                 bg="#225599"
               />
@@ -139,7 +139,7 @@ export default function panelAdmin() {
                 icon={
                   <FontAwesome5 name="user-circle" size={24} color="#225599" />
                 }
-                bg="#ffd600"
+                bg="#ffd700"
               />
             </View>
           </View>
@@ -179,7 +179,7 @@ export default function panelAdmin() {
 
 const styles = StyleSheet.create({
   companyCard: {
-    backgroundColor: "#f9d72d",
+    backgroundColor: "#FFD700",
   },
   titleCard: {
     color: "#fff",
