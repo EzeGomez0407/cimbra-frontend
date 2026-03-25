@@ -74,34 +74,27 @@ export default function panelAdmin() {
       <View className="flex-1 px-6 py-6 flex flex-col gap-5 overflow-y-auto">
         {/* Company card */}
         <View style={styles.companyCard} className="rounded-3xl p-5 shadow-lg">
-          <View style={{ flexDirection: "row", gap: 15 }} className="mb-4">
-            <Text
-              style={{
-                width: 50,
-                height: 50,
-                backgroundColor: "#225599",
-                borderRadius: 20,
-                textAlign: "center",
-                textAlignVertical: "center",
-              }}
-            >
+          <View className="flex-row gap-5 mb-4 items-start">
+            <View className="flex-row items-center bg-[#225599] p-3 rounded-2xl">
               <MaterialCommunityIcons
                 name="office-building-outline"
                 size={28}
                 color="#f9d72d"
               />
-            </Text>
+            </View>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
-              <Text style={styles.text}>Tu empresa</Text>
-              <Text style={styles.title}>Chorizo</Text>
-              <Text style={styles.text}>Administrador</Text>
+              <Text className="text-base text-[#908c9d]">Tu empresa</Text>
+              <Text className="text-3xl font-semibold text-[#225599]">
+                3Dverse
+              </Text>
+              <Text className="text-base text-[#908c9d]">Administrador</Text>
             </View>
           </View>
 
           <CTAButton
             title={"Ver panel completo"}
             icon={<AntDesign name="bar-chart" size={24} color="#fff" />}
-            bgBtn={"#0a3a6b"}
+            bgBtn={"#225599"}
             iconTwo={
               <MaterialCommunityIcons
                 name="chevron-right"
@@ -113,39 +106,42 @@ export default function panelAdmin() {
         </View>
 
         {/* Quick access */}
-        <View style={{ color: "#003366", gap: 10 }}>
-          <Text style={{ color: "#003366" }}>Acceso rápido</Text>
-          <View
-            style={{
-              flexDirection: "row",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
-              gap: 10,
-            }}
-          >
-            <QuickCard
-              onPress={() => router.navigate("/admin/works-view")}
-              title="Obras"
-              icon={<FontAwesome name="building-o" size={24} color="#ffd600" />}
-              bg="#0a3a6b"
-            />
-            <QuickCard
-              title="Empleados"
-              icon={<Feather name="users" size={24} color="#fff" />}
-              bg="#4b6658"
-            />
-            <QuickCard
-              title="Herramientas"
-              icon={<Feather name="tool" size={24} color="#0a3a6b" />}
-              bg="#d6c27a"
-            />
-            <QuickCard
-              title="Mi perfil"
-              icon={
-                <FontAwesome5 name="user-circle" size={24} color="#0a3a6b" />
-              }
-              bg="#ffd600"
-            />
+        <View style={{ color: "#225599", gap: 10 }}>
+          <Text style={{ color: "#225599" }}>Acceso rápido</Text>
+          <View className="flex flex-row flex-wrap justify-between gap-y-4">
+            <View className="w-[48%] h-[170px]">
+              <QuickCard
+                onPress={() => router.navigate("/admin/works-view")}
+                title="Obras"
+                icon={
+                  <FontAwesome name="building-o" size={24} color="#ffd600" />
+                }
+                bg="#225599"
+              />
+            </View>
+            <View className="w-[48%] h-[170px]">
+              <QuickCard
+                title="Empleados"
+                icon={<Feather name="users" size={24} color="#fff" />}
+                bg="#4b6658"
+              />
+            </View>
+            <View className="w-[48%] h-[170px]">
+              <QuickCard
+                title="Herramientas"
+                icon={<Feather name="tool" size={24} color="#225599" />}
+                bg="#d6c27a"
+              />
+            </View>
+            <View className="w-[48%] h-[170px]">
+              <QuickCard
+                title="Mi perfil"
+                icon={
+                  <FontAwesome5 name="user-circle" size={24} color="#225599" />
+                }
+                bg="#ffd600"
+              />
+            </View>
           </View>
         </View>
         {/* Stats card */}
@@ -188,11 +184,6 @@ const styles = StyleSheet.create({
   titleCard: {
     color: "#fff",
   },
-  title: {
-    fontSize: 16,
-    color: "#225599",
-    textAlign: "center",
-  },
   text: {
     fontSize: 12,
     textAlign: "center",
@@ -205,7 +196,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   titleCard: {
-    color: "#003366",
+    color: "#225599",
     fontWeight: "500",
     marginBottom: 15,
   },
@@ -223,7 +214,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   activitytitle: {
-    color: "#003366",
+    color: "#225599",
     fontWeight: "500",
   },
 });
@@ -250,7 +241,7 @@ const stylesSumaryAndDivider = {
   number: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#003366",
+    color: "#225599",
   },
 
   label: {
@@ -302,7 +293,7 @@ const activityStyles = {
   },
 
   text: {
-    color: "#003366",
+    color: "#225599",
     fontSize: 13,
   },
 

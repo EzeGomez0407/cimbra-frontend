@@ -79,7 +79,7 @@ export default function Index() {
                 labelStyle={{ fontSize: 16 }}
                 contentStyle={{ height: 50, flexDirection: "row-reverse" }}
                 style={{ borderRadius: 15 }}
-                onPress={() => router.navigate("/first-login")}
+                onPress={() => router.navigate("/admin/panel")}
               >
                 Iniciar sesión
               </Button>
