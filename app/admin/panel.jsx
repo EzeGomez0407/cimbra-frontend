@@ -1,22 +1,16 @@
 import { router, Stack } from "expo-router";
-
+import { StyleSheet } from "react-native";
 import { Text, View } from "react-native";
+import React from "react";
 
 import CustomButton, {
   CallToActionButton,
   QuickCard,
 } from "../../components/Button/CustomButton";
-
-import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import AntDesign from "@expo/vector-icons/AntDesign";
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
-
-import { StyleSheet } from "react-native";
 import HeaderIcon from "../../components/Button/HeaderIcon";
-import React from "react";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
+
+import { Icons } from "../../assets/icons";
 
 export default function panelAdmin() {
   const data = [
@@ -57,13 +51,13 @@ export default function panelAdmin() {
             <View style={{ flexDirection: "row", gap: 10, marginRight: 10 }}>
               {/* Notificaciones */}
               <HeaderIcon
-                icon={<Feather name="bell" size={20} color="#FFD700" />}
+                icon={<Icons.notification size={20} color="#FFD700" />}
                 bgIcon={"#2c5c8a"}
               />
 
               {/* Configuración */}
               <HeaderIcon
-                icon={<Feather name="settings" size={20} color="#FFD700" />}
+                icon={<Icons.settings size={20} color="#FFD700" />}
                 bgIcon={"#2c5c8a"}
               />
             </View>
@@ -76,11 +70,7 @@ export default function panelAdmin() {
         <View style={styles.companyCard} className="rounded-3xl p-5 shadow-lg">
           <View className="flex-row gap-5 mb-4 items-start">
             <View className="flex-row items-center bg-[#225599] p-3 rounded-2xl">
-              <MaterialCommunityIcons
-                name="office-building-outline"
-                size={28}
-                color="#f9d72d"
-              />
+              <Icons.building size={28} color="#f9d72d" />
             </View>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
               <Text className="text-base text-[#908c9d]">Tu empresa</Text>
@@ -93,15 +83,9 @@ export default function panelAdmin() {
 
           <CallToActionButton
             title={"Ver panel completo"}
-            icon={<AntDesign name="bar-chart" size={24} color="#fff" />}
+            icon={<Icons.barChart size={24} color="#fff" />}
             bgBtn={"#225599"}
-            iconTwo={
-              <MaterialCommunityIcons
-                name="chevron-right"
-                size={24}
-                color={"#fff"}
-              />
-            }
+            iconTwo={<Icons.arrowRight size={24} color={"#fff"} />}
           />
         </View>
 
@@ -113,32 +97,29 @@ export default function panelAdmin() {
               <QuickCard
                 onPress={() => router.navigate("/admin/works-view")}
                 title="Obras"
-                icon={
-                  <FontAwesome name="building-o" size={24} color="#ffd600" />
-                }
+                icon={<Icons.building size={24} color="#ffd600" />}
                 bg="#225599"
               />
             </View>
             <View className="w-[48%] h-[170px]">
               <QuickCard
                 title="Empleados"
-                icon={<Feather name="users" size={24} color="#fff" />}
+                icon={<Icons.users size={24} color="#fff" />}
                 bg="#4b6658"
               />
             </View>
             <View className="w-[48%] h-[170px]">
               <QuickCard
                 title="Herramientas"
-                icon={<Feather name="tool" size={24} color="#225599" />}
+                icon={<Icons.frenchKey size={24} color="#225599" />}
                 bg="#d6c27a"
               />
             </View>
             <View className="w-[48%] h-[170px]">
               <QuickCard
+                onPress={() => router.navigate("/admin/profile")}
                 title="Mi perfil"
-                icon={
-                  <FontAwesome5 name="user-circle" size={24} color="#225599" />
-                }
+                icon={<Icons.userCircle size={24} color="#225599" />}
                 bg="#ffd600"
               />
             </View>
@@ -171,7 +152,7 @@ export default function panelAdmin() {
         onPress={() => router.push("/")}
         textBtnCenter={"Cerrar sesión"}
         btnCenter={true}
-        iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
+        iconBtnCenter={<Icons.logOut size={24} color="black" />}
       />
     </KeyboardLayout>
   );

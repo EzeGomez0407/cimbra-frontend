@@ -4,10 +4,6 @@ import { router, Stack } from "expo-router";
 
 import ScreenLayout from "../../components/layout/ScreenLayout";
 
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
-import Feather from "@expo/vector-icons/Feather";
-
 import Divider from "../../components/Divider/Divider";
 import CustomButton from "../../components/Button/CustomButton";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
@@ -66,13 +62,7 @@ export default function PostLogin({ name }) {
               colorTitle={"#225599"}
               titleBtn={"Soy administrador"}
               textBtn={"Registrá o gestioná tu empresa"}
-              icon={
-                <MaterialCommunityIcons
-                  name="office-building-outline"
-                  size={20}
-                  color="#225599"
-                />
-              }
+              icon={<Icons.building size={20} color="#225599" />}
             />
           </View>
 
@@ -93,7 +83,7 @@ export default function PostLogin({ name }) {
             colorTitle={"#225599"}
             titleBtn={"Mi perfil"}
             textBtn={"Ver y editar tu información"}
-            icon={<FontAwesome6 name="user-circle" size={20} color="#e5c60b" />}
+            icon={<Icons.userCircle size={20} color="#e5c60b" />}
           />
         </View>
         {/* btn cerrar sesión */}
@@ -102,7 +92,7 @@ export default function PostLogin({ name }) {
           onPress={() => router.push("/")}
           textBtnCenter={"Cerrar sesión"}
           btnCenter={true}
-          iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
+          iconBtnCenter={<Icons.logOut size={24} color="black" />}
         />
       </KeyboardLayout>
     </ScreenLayout>
@@ -147,12 +137,7 @@ function CardInfo() {
   return (
     <View style={styleCardInfo.card}>
       <View style={styleCardInfo.contentOne}>
-        <MaterialCommunityIcons
-          name="office-building-outline"
-          size={20}
-          color="#225599"
-          style={styleCardInfo.icon}
-        />
+        <Icons.building size={20} color="#225599" style={styleCardInfo.icon} />
         <View style={styleCardInfo.contentOneText}>
           <Text style={styleCardInfo.title}>Sin empresa asociada</Text>
           <Text style={styleCardInfo.text}>
@@ -229,6 +214,7 @@ const styleCardInfo = StyleSheet.create({
 /*===============Tarjeta de ingreso de clave de acceso de empleado============*/
 import { useState } from "react";
 import { Button, TextInput } from "react-native-paper";
+import { Icons } from "../../assets/icons";
 
 function CardEmployee() {
   const [key, setKey] = useState("");
@@ -241,12 +227,7 @@ function CardEmployee() {
   return (
     <View style={cardEmployeeStyle.card}>
       <View style={cardEmployeeStyle.contentOne}>
-        <Feather
-          name="key"
-          size={20}
-          color="#fff"
-          style={cardEmployeeStyle.icon}
-        />
+        <Icons.key size={20} color="#fff" style={cardEmployeeStyle.icon} />
         <View style={cardEmployeeStyle.contentOneText}>
           <Text style={cardEmployeeStyle.title}>Unirse a una empresa</Text>
           <Text style={cardEmployeeStyle.text}>Ingresá tu clave de acceso</Text>
