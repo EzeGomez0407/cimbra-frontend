@@ -87,6 +87,7 @@ export default function PostLogin({ name }) {
 
           {/*user button */}
           <CustomButton
+            onPress={() => router.navigate("/user-profile")}
             bgIcon={"#003466"}
             bgBtn={"#FFF"}
             colorTitle={"#225599"}

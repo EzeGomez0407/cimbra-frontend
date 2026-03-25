@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Pressable, Animated, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  Animated,
+  TouchableOpacity,
+} from "react-native";
 import { useRef } from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
@@ -84,7 +91,8 @@ export default function CustomButton({
   );
 }
 
-export function CTAButton({ title, icon, bgBtn, onPress, iconTwo, ...props }) {
+/* Call To Action */
+export function CallToActionButton({ title, icon, bgBtn, onPress, iconTwo, ...props }) {
   //animaciones de boton
   const scale = useRef(new Animated.Value(1)).current;
 
@@ -177,15 +185,10 @@ const style = StyleSheet.create({
   },
 });
 
-  
-
-
 export function QuickCard({ title, icon, bg }) {
   return (
     <TouchableOpacity style={styles.card}>
-      <View style={[styles.iconBox, { backgroundColor: bg }]}>
-        {icon}
-      </View>
+      <View style={[styles.iconBox, { backgroundColor: bg }]}>{icon}</View>
 
       <Text style={styles.cardText}>{title}</Text>
     </TouchableOpacity>
