@@ -8,6 +8,7 @@ import BasicMsgError from "../../components/to-forms/BasicMsgError";
 import { Button, Surface } from "react-native-paper";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
+import { Icons } from "../../assets/icons";
 
 export default function CreateCompany() {
   return (
@@ -21,11 +22,7 @@ export default function CreateCompany() {
           headerLeft: () => (
             <View className="py-2 pt-5 flex-column gap-1">
               <View className="self-start p-5 bg-white/10 rounded-3xl mb-4">
-                <MaterialCommunityIcons
-                  name="office-building-plus-outline"
-                  size={24}
-                  color="#FFD700"
-                />
+                <Icons.building size={24} color="#FFD700" />
               </View>
               <Text className="text-3xl font-bold text-white">
                 Registrar empresa
@@ -42,13 +39,7 @@ export default function CreateCompany() {
           <BasicInputs
             label={" Nombre de la empresa"}
             placeholder={"Ingresá el nombre de tu empresa"}
-            leftIcon={
-              <MaterialCommunityIcons
-                name="office-building-plus-outline"
-                size={20}
-                color="#FFD700"
-              />
-            }
+            leftIcon={<Icons.buildingPlus size={20} color="#FFD700" />}
             style={{ fontSize: 18 }}
           />
           <BasicMsgError />
@@ -56,7 +47,7 @@ export default function CreateCompany() {
             label={" Dirección"}
             placeholder={"Ingresá el nombre de tu empresa"}
             leftIcon={
-              <SimpleLineIcons name="location-pin" size={20} color="#FFD700" />
+              <Icons.mapMarker size={20} color="#FFD700" />
             }
             style={{ fontSize: 18 }}
           />
@@ -74,9 +65,8 @@ export default function CreateCompany() {
             onPress={() => router.navigate("/admin/panel")}
             mode="contained"
             icon={() => (
-              <MaterialIcons
-                name="arrow-forward-ios"
-                size={16}
+              <Icons.arrowRight
+                size={18}
                 color="#225599"
               />
             )}

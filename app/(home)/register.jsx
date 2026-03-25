@@ -1,8 +1,7 @@
 import { StyleSheet, Text, View } from "react-native";
-import Feather from "@expo/vector-icons/Feather";
+
 import { Surface, TextInput } from "react-native-paper";
-import Fontisto from "@expo/vector-icons/Fontisto";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
 import { Button } from "react-native-paper";
 import DividerCustomer from "../../components/DividerCustomer";
 import { Link, router, Stack } from "expo-router";
@@ -13,6 +12,7 @@ import BasicInputs from "../../components/to-forms/BasicInputs";
 import BasicMsgError from "../../components/to-forms/BasicMsgError";
 import ScreenLayout from "../../components/layout/ScreenLayout";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
+import { Icons } from "../../assets/icons";
 
 export default function Register() {
   const [userData, setUserData] = useState({
@@ -74,7 +74,7 @@ export default function Register() {
         {/* ------HEADER DE PÁGINA-------- */}
         <View style={{ gap: 5, marginTop: 30 }}>
           <View style={styles.iconUser}>
-            <Feather name="user" size={24} color="#FFD700" />
+            <Icons.user size={24} color="#FFD700" />
           </View>
           <Text className="text-[#225599] text-3xl">Crear cuenta</Text>
           <Text className="text-[#225599] text-base">
@@ -88,7 +88,7 @@ export default function Register() {
           <BasicInputs
             onChangeText={(value) => onChange("name", value)}
             label={"Nombre"}
-            leftIcon={<Feather name="user" size={20} color="#FFD700" />}
+            leftIcon={<Icons.user size={20} color="#FFD700" />}
             placeholder={"Tu nombre"}
           />
           <BasicMsgError msg={errorDataUser.name} />
@@ -97,7 +97,7 @@ export default function Register() {
           <BasicInputs
             onChangeText={(value) => onChange("lastname", value)}
             label={"Apellido"}
-            leftIcon={<Feather name="user" size={20} color="#FFD700" />}
+            leftIcon={<Icons.user size={20} color="#FFD700" />}
             placeholder={"Tu apellido"}
           />
           <BasicMsgError msg={errorDataUser.lastname} />
@@ -106,7 +106,7 @@ export default function Register() {
           <BasicInputs
             onChangeText={(value) => onChange("email", value)}
             label={"Correo electrónico"}
-            leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
+            leftIcon={<Icons.mail size={20} color="#FFD700" />}
             placeholder={"tucorreo@mail.com"}
           />
           <BasicMsgError msg={errorDataUser.email} />
@@ -115,7 +115,7 @@ export default function Register() {
           <BasicInputs
             onChangeText={(value) => onChange("password", value)}
             label={"Contraseña"}
-            leftIcon={<Feather name="lock" size={20} color="#FFD700" />}
+            leftIcon={<Icons.padlockClose size={20} color="#FFD700" />}
             placeholder={"Mínimo 8 caracteres"}
             right={<TextInput.Icon icon="eye" />}
           />
@@ -138,9 +138,8 @@ export default function Register() {
           <Button
             mode="contained"
             icon={() => (
-              <MaterialIcons
-                name="arrow-forward-ios"
-                size={16}
+              <Icons.arrowRight
+                size={18}
                 color="#225599"
               />
             )}

@@ -6,10 +6,11 @@ import { Avatar } from "react-native-paper";
 import CustomButton from "../../components/Button/CustomButton";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
 
-import Feather from "@expo/vector-icons/Feather";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-export default function UserProfile() {
+
+import { Icons } from "../../assets/icons";
+
+export default function Profile() {
   return (
     <KeyboardLayout>
       <Stack.Screen options={{ headerShown: false }} />
@@ -40,7 +41,7 @@ export default function UserProfile() {
           onPress={() => router.push("/")}
           textBtnCenter={"Cerrar sesión"}
           btnCenter={true}
-          iconBtnCenter={<Feather name="log-out" size={24} color="black" />}
+          iconBtnCenter={<Icons.logOut size={24} color="black" />}
         />
       </View>
     </KeyboardLayout>
@@ -62,7 +63,7 @@ function ProfileHeader() {
 
         {/* Botón cámara */}
         <TouchableOpacity style={stylesProfileHeader.camera}>
-          <Feather name="camera" size={14} color="#003366" />
+          <Icons.camera size={14} color="#003366" />
         </TouchableOpacity>
       </View>
 
@@ -120,7 +121,7 @@ function PersonalDataCard() {
         <Text style={stylesUserInfo.title}>Datos personales</Text>
 
         <TouchableOpacity style={stylesUserInfo.editBtn}>
-          <Feather name="edit-2" size={14} color="#fff" />
+          <Icons.pencil size={14} color="#fff" />
           <Text style={stylesUserInfo.editText}>Editar</Text>
         </TouchableOpacity>
       </View>
@@ -130,7 +131,7 @@ function PersonalDataCard() {
         {/* Item */}
         <View style={stylesUserInfo.item}>
           <View style={stylesUserInfo.iconBox}>
-            <Feather name="user" size={18} color="#003366" />
+            <Icons.user size={18} color="#003366" />
           </View>
 
           <View style={stylesUserInfo.textContainer}>
@@ -145,7 +146,7 @@ function PersonalDataCard() {
         {/* Item */}
         <View style={stylesUserInfo.item}>
           <View style={stylesUserInfo.iconBox}>
-            <Feather name="mail" size={18} color="#003366" />
+            <Icons.mail size={18} color="#003366" />
           </View>
 
           <View style={stylesUserInfo.textContainer}>
@@ -246,11 +247,7 @@ function CompanyCard() {
         <View style={stylesCardCompany.row}>
           {/* Icono */}
           <View style={stylesCardCompany.iconBoxYellow}>
-            <MaterialCommunityIcons
-              name="office-building-outline"
-              size={20}
-              color="#FFD700"
-            />
+            <Icons.building size={20} color="#FFD700" />
           </View>
 
           {/* Texto */}
@@ -261,7 +258,8 @@ function CompanyCard() {
             </Text>
 
             <View style={stylesCardCompany.locationRow}>
-              <Feather name="map-pin" size={14} color="#003366" />
+              <Icons.mapMarker size={14} color="#003366" />
+
               <Text style={stylesCardCompany.locationText}>
                 Esquina Corrientes
               </Text>
@@ -339,7 +337,7 @@ function EmployeesCard() {
         <View style={stylesEmployess.row}>
           {/* Icono */}
           <View style={stylesEmployess.iconBoxGreen}>
-            <Feather name="users" size={20} color="#fff" />
+            <Icons.users size={20} color="#fff" />
           </View>
 
           {/* Texto */}

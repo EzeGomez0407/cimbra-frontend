@@ -1,16 +1,15 @@
 import ScreenLayout from "../../components/layout/ScreenLayout";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
 import BasicInputs from "../../components/to-forms/BasicInputs";
-import Fontisto from "@expo/vector-icons/Fontisto";
-import Feather from "@expo/vector-icons/Feather";
 
 import { Link, router, Stack } from "expo-router";
 import { StyleSheet, Text, View } from "react-native";
 import BasicMsgError from "../../components/to-forms/BasicMsgError";
 import { Button, Surface, TextInput } from "react-native-paper";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
 import DividerCustomer from "../../components/DividerCustomer";
 import { GoogleIcon } from "../../logos/logos";
+import { Icons } from "../../assets/icons";
 
 export default function Index() {
   return (
@@ -30,7 +29,7 @@ export default function Index() {
 
           <View className=" my-8">
             <View style={styles.iconUser}>
-              <Feather name="user" size={24} color="#FFD700" />
+              <Icons.user size={24} color="#FFD700" />
             </View>
             <Text className="text-[#225599] text-3xl">Iniciar sesión</Text>
             <Text className="text-[#225599] text-base">
@@ -43,7 +42,7 @@ export default function Index() {
             {/* INPUT EMAIL */}
             <BasicInputs
               label={"Correo electrónico"}
-              leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
+              leftIcon={<Icons.mail size={20} color="#FFD700" />}
               placeholder={"tucorreo@mail.com"}
             />
             <BasicMsgError msg={""} />
@@ -51,7 +50,7 @@ export default function Index() {
             {/* INPUT PASSWORD */}
             <BasicInputs
               label={"Contraseña"}
-              leftIcon={<Feather name="lock" size={20} color="#FFD700" />}
+              leftIcon={<Icons.padlockClose size={20} color="#FFD700" />}
               placeholder={"Mínimo 8 caracteres"}
               right={<TextInput.Icon icon="eye" />}
             />
@@ -67,13 +66,7 @@ export default function Index() {
             <Surface style={{ borderRadius: 15, shadowColor: "#c7b75b" }}>
               <Button
                 mode="contained"
-                icon={() => (
-                  <MaterialIcons
-                    name="arrow-forward-ios"
-                    size={16}
-                    color="#225599"
-                  />
-                )}
+                icon={() => <Icons.arrowRight size={18} color="#225599" />}
                 buttonColor="#FFD700"
                 textColor="#225599"
                 labelStyle={{ fontSize: 16 }}
