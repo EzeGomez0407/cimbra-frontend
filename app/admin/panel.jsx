@@ -73,11 +73,11 @@ export default function panelAdmin() {
               <Icons.building size={28} color="#f9d72d" />
             </View>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
-              <Text className="text-base text-[#908c9d]">Tu empresa</Text>
-              <Text className="text-3xl font-semibold text-[#225599]">
+              <Text className="text-base text-placeholder">Tu empresa</Text>
+              <Text className="text-3xl font-semibold text-blue-primary">
                 3Dverse
               </Text>
-              <Text className="text-base text-[#908c9d]">Administrador</Text>
+              <Text className="text-base text-placeholder">Administrador</Text>
             </View>
           </View>
 
@@ -90,7 +90,7 @@ export default function panelAdmin() {
         </View>
 
         {/* Quick access */}
-        <View style={{ color: "#225599", gap: 10 }}>
+        <View className="text-blue-primary gap-3">
           <Text style={{ color: "#225599" }}>Acceso rápido</Text>
           <View className="flex flex-row flex-wrap justify-between gap-y-4">
             <View className="w-[48%] h-[170px]">
@@ -160,7 +160,7 @@ export default function panelAdmin() {
 
 const styles = StyleSheet.create({
   companyCard: {
-    backgroundColor: "#f9d72d",
+    backgroundColor: "#FFD700",
   },
   titleCard: {
     color: "#fff",
