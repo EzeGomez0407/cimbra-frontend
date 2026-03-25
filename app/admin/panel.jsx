@@ -3,7 +3,7 @@ import { router, Stack } from "expo-router";
 import { Text, View } from "react-native";
 
 import CustomButton, {
-  CTAButton,
+  CallToActionButton,
   QuickCard,
 } from "../../components/Button/CustomButton";
 
@@ -91,7 +91,7 @@ export default function panelAdmin() {
             </View>
           </View>
 
-          <CTAButton
+          <CallToActionButton
             title={"Ver panel completo"}
             icon={<AntDesign name="bar-chart" size={24} color="#fff" />}
             bgBtn={"#225599"}
@@ -184,6 +184,11 @@ const styles = StyleSheet.create({
   titleCard: {
     color: "#fff",
   },
+  title: {
+    fontSize: 16,
+    color: "#225599",
+    textAlign: "center",
+  },
   text: {
     fontSize: 12,
     textAlign: "center",
@@ -196,7 +201,7 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   titleCard: {
-    color: "#225599",
+    color: "#003366",
     fontWeight: "500",
     marginBottom: 15,
   },
@@ -214,7 +219,7 @@ const styles = StyleSheet.create({
     gap: 15,
   },
   activitytitle: {
-    color: "#225599",
+    color: "#003366",
     fontWeight: "500",
   },
 });
@@ -241,7 +246,7 @@ const stylesSumaryAndDivider = {
   number: {
     fontSize: 22,
     fontWeight: "bold",
-    color: "#225599",
+    color: "#003366",
   },
 
   label: {
@@ -293,7 +298,7 @@ const activityStyles = {
   },
 
   text: {
-    color: "#225599",
+    color: "#003366",
     fontSize: 13,
   },
 
