@@ -25,98 +25,104 @@ export default function Index() {
         }}
       />
       <KeyboardLayout>
-        {/* ------HEADER DE PÁGINA-------- */}
-
-        <View className=" my-8">
-          <View style={styles.iconUser}>
-            <Feather name="user" size={24} color="#FFD700" />
-          </View>
-          <Text className="text-[#225599] text-3xl">Iniciar sesión</Text>
-          <Text className="text-[#225599] text-base">
-            Ingresá tus credenciales para continuar
-          </Text>
-        </View>
-
-        {/* ------------FORMULARIO DE INICIO DE SESION----------- */}
-        <View className="mt-3xl gap-0">
-          {/* INPUT EMAIL */}
-          <BasicInputs
-            label={"Correo electrónico"}
-            leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
-            placeholder={"tucorreo@mail.com"}
-          />
-          <BasicMsgError msg={""} />
-
-          {/* INPUT PASSWORD */}
-          <BasicInputs
-            label={"Contraseña"}
-            leftIcon={<Feather name="lock" size={20} color="#FFD700" />}
-            placeholder={"Mínimo 8 caracteres"}
-            right={<TextInput.Icon icon="eye" />}
-          />
-          <BasicMsgError msg={""} />
-        </View>
-
-        {/* --------BOTON DE INICIAR SESION------- */}
-
-        <Text className="text-[#225599] text-base text-right mb-6 mt-2 underline">
-          ¿Olvidaste tu contraseña?
-        </Text>
         <View>
-          <Surface style={{ borderRadius: 15, shadowColor: "#c7b75b" }}>
-            <Button
-              mode="contained"
-              icon={() => (
-                <MaterialIcons
-                  name="arrow-forward-ios"
-                  size={16}
-                  color="#225599"
-                />
-              )}
-              buttonColor="#FFD700"
-              textColor="#225599"
-              labelStyle={{ fontSize: 16 }}
-              contentStyle={{ height: 50, flexDirection: "row-reverse" }}
-              style={{ borderRadius: 15 }}
-              onPress={() => router.navigate("/first-login")}
-            >
-              Iniciar sesión
-            </Button>
-          </Surface>
+          {/* ------HEADER DE PÁGINA-------- */}
 
-          {/* ---------BOTON DE INICIO CON GOOGLE------- */}
-          <DividerCustomer label="o continúa con" />
+          <View className=" my-8">
+            <View style={styles.iconUser}>
+              <Feather name="user" size={24} color="#FFD700" />
+            </View>
+            <Text className="text-[#225599] text-3xl">Iniciar sesión</Text>
+            <Text className="text-[#225599] text-base">
+              Ingresá tus credenciales para continuar
+            </Text>
+          </View>
 
-          <Surface
-            style={{ borderRadius: 15, shadowColor: "#c7b75b", marginTop: 10 }}
-          >
-            <Button
-              mode="contained"
-              icon={() => <GoogleIcon size={22} />}
-              buttonColor="#fff"
-              textColor="#225599"
-              labelStyle={{ fontSize: 16 }}
-              contentStyle={{ height: 50 }}
+          {/* ------------FORMULARIO DE INICIO DE SESION----------- */}
+          <View className="mt-3xl gap-0">
+            {/* INPUT EMAIL */}
+            <BasicInputs
+              label={"Correo electrónico"}
+              leftIcon={<Fontisto name="email" size={20} color="#FFD700" />}
+              placeholder={"tucorreo@mail.com"}
+            />
+            <BasicMsgError msg={""} />
+
+            {/* INPUT PASSWORD */}
+            <BasicInputs
+              label={"Contraseña"}
+              leftIcon={<Feather name="lock" size={20} color="#FFD700" />}
+              placeholder={"Mínimo 8 caracteres"}
+              right={<TextInput.Icon icon="eye" />}
+            />
+            <BasicMsgError msg={""} />
+          </View>
+
+          {/* --------BOTON DE INICIAR SESION------- */}
+
+          <Text className="text-[#225599] text-base text-right mb-6 mt-2 underline">
+            ¿Olvidaste tu contraseña?
+          </Text>
+          <View>
+            <Surface style={{ borderRadius: 15, shadowColor: "#c7b75b" }}>
+              <Button
+                mode="contained"
+                icon={() => (
+                  <MaterialIcons
+                    name="arrow-forward-ios"
+                    size={16}
+                    color="#225599"
+                  />
+                )}
+                buttonColor="#FFD700"
+                textColor="#225599"
+                labelStyle={{ fontSize: 16 }}
+                contentStyle={{ height: 50, flexDirection: "row-reverse" }}
+                style={{ borderRadius: 15 }}
+                onPress={() => router.navigate("/admin/panel")}
+              >
+                Iniciar sesión
+              </Button>
+            </Surface>
+
+            {/* ---------BOTON DE INICIO CON GOOGLE------- */}
+            <DividerCustomer label="o continúa con" />
+
+            <Surface
               style={{
                 borderRadius: 15,
-                borderWidth: 1,
-                borderColor: "#c7b75b",
+                shadowColor: "#c7b75b",
+                marginTop: 10,
               }}
-              onPress={() => router.navigate("/first-login")}
             >
-              Inicia con Google
-            </Button>
-          </Surface>
-        </View>
+              <Button
+                mode="contained"
+                icon={() => <GoogleIcon size={22} />}
+                buttonColor="#fff"
+                textColor="#225599"
+                labelStyle={{ fontSize: 16 }}
+                contentStyle={{ height: 50 }}
+                style={{
+                  borderRadius: 15,
+                  borderWidth: 1,
+                  borderColor: "#c7b75b",
+                }}
+                onPress={() => router.navigate("/admin/panel")}
+              >
+                Inicia con Google
+              </Button>
+            </Surface>
+          </View>
 
-        {/* -------IR A CREAR CUENTA------- */}
-        <View style={[{ ...styles.viewTextTerminosUso, marginTop: 200 }]}>
-          <Text style={styles.viewTextTerminosUso.text}>
-            ¿No tenés cuenta?{" "}
-          </Text>
-          <Link href={"/register"}>
-            <Text style={styles.viewTextTerminosUso.links}>Crear cuenta</Text>
-          </Link>
+          {/* -------IR A CREAR CUENTA------- */}
+          <View style={[{ ...styles.viewTextTerminosUso, marginTop: 200 }]}>
+            <Text style={styles.viewTextTerminosUso.text}>
+              ¿No tenés cuenta?{" "}
+            </Text>
+            <Link href={"/register"}>
+              <Text style={styles.viewTextTerminosUso.links}>Crear cuenta</Text>
+            </Link>
+          </View>
         </View>
       </KeyboardLayout>
     </ScreenLayout>

@@ -9,6 +9,7 @@ import {
 import { useRef } from "react";
 
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { Button, Surface } from "react-native-paper";
 
 export default function CustomButton({
   bgIcon,
@@ -92,7 +93,14 @@ export default function CustomButton({
 }
 
 /* Call To Action */
-export function CallToActionButton({ title, icon, bgBtn, onPress, iconTwo, ...props }) {
+export function CallToActionButton({
+  title,
+  icon,
+  bgBtn,
+  onPress,
+  iconTwo,
+  ...props
+}) {
   //animaciones de boton
   const scale = useRef(new Animated.Value(1)).current;
 
@@ -185,46 +193,37 @@ const style = StyleSheet.create({
   },
 });
 
-export function QuickCard({ title, icon, bg }) {
+export function QuickCard({ title, icon, bg, color, ...props }) {
   return (
-    <TouchableOpacity style={styles.card}>
-      <View style={[styles.iconBox, { backgroundColor: bg }]}>{icon}</View>
-
-      <Text style={styles.cardText}>{title}</Text>
-    </TouchableOpacity>
+    <Surface
+      style={{
+        borderRadius: 15,
+        backgroundColor: "white",
+        width: "100%",
+        alignItems: "center",
+      }}
+    >
+      <Button
+        {...props}
+        mode="contained"
+        textColor="black"
+        buttonColor="white"
+        contentStyle={{
+          width: "100%",
+          height: "100%",
+        }}
+        style={{ borderRadius: 15, width: "100%", height: "100%" }}
+      >
+        <View className="-translate-x-1 h-full w-full flex-column justify-center items-center gap-2">
+          <View
+            style={{ backgroundColor: bg, borderRadius: 15 }}
+            className="self p-4"
+          >
+            {icon}
+          </View>
+          <Text className="text-[#225599] text-lg font-medium">{title}</Text>
+        </View>
+      </Button>
+    </Surface>
   );
 }
-
-const styles = {
-  grid: {
-    flexDirection: "row",
-    flexWrap: "wrap",
-    justifyContent: "space-between",
-  },
-
-  card: {
-    width: "48%",
-    height: 130,
-    backgroundColor: "#f2f2f2",
-    borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#e6d89c",
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
-  },
-
-  iconBox: {
-    width: 45,
-    height: 45,
-    borderRadius: 12,
-    alignItems: "center",
-    justifyContent: "center",
-    marginBottom: 10,
-  },
-
-  cardText: {
-    color: "#003366",
-    fontWeight: "500",
-  },
-};
