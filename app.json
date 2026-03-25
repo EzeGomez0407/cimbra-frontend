@@ -26,12 +26,11 @@
       },
       "edgeToEdgeEnabled": true
     },
-    "web": {
-      "favicon": "./assets/favicon.png",
-      "bundle": "metro"
+    "androidNavigationBar": {
+      "backgroundColor": "#225599",
+      "color": "fff",
+      "barStyle": "light-content"
     },
-    "plugins": [
-      "expo-router"
-    ]
+    "plugins": ["expo-router"]
   }
 }
