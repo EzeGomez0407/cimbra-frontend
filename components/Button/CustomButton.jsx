@@ -92,7 +92,15 @@ export default function CustomButton({
   );
 }
 
-export function CTAButton({ title, icon, bgBtn, onPress, iconTwo, ...props }) {
+/* Call To Action */
+export function CallToActionButton({
+  title,
+  icon,
+  bgBtn,
+  onPress,
+  iconTwo,
+  ...props
+}) {
   //animaciones de boton
   const scale = useRef(new Animated.Value(1)).current;
 
