@@ -5,18 +5,17 @@ export default function KeyboardLayout({ children, style }) {
   const insets = useSafeAreaInsets();
 
   return (
-    <KeyboardAvoidingView className="" behavior={"height"}>
+    <KeyboardAvoidingView style={{ flex: 1 }} behavior={"height"}>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={[
           {
             flexGrow: 1,
-            justifyContent: "space-between",
             paddingBottom: insets.bottom,
           },
           style,
         ]}
-        keyboardShouldPersistTaps="always"
+        keyboardShouldPersistTaps="handled"
       >
         {children}
       </ScrollView>
