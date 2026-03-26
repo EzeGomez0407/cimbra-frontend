@@ -1,6 +1,5 @@
 import { router, Stack } from "expo-router";
-import { StyleSheet } from "react-native";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import React from "react";
 
 import CustomButton, {
@@ -68,8 +67,8 @@ export default function panelAdmin() {
       <View className="flex-1 px-6 py-6 flex flex-col gap-5 overflow-y-auto">
         {/* Company card */}
         <View style={styles.companyCard} className="rounded-3xl p-5 shadow-lg">
-          <View className="flex-row gap-5 mb-4 items-start">
-            <View className="flex-row items-center bg-[#225599] p-3 rounded-2xl">
+          <View className="flex-row gap-5 items-center">
+            <View className="items-center bg-[#225599] p-3 rounded-2xl">
               <Icons.building size={28} color="#f9d72d" />
             </View>
             <View style={{ flex: 1, alignItems: "flex-start" }}>
@@ -80,13 +79,6 @@ export default function panelAdmin() {
               <Text className="text-base text-placeholder">Administrador</Text>
             </View>
           </View>
-
-          <CallToActionButton
-            title={"Ver panel completo"}
-            icon={<Icons.barChart size={24} color="#fff" />}
-            bgBtn={"#225599"}
-            iconTwo={<Icons.arrowRight size={24} color={"#fff"} />}
-          />
         </View>
 
         {/* Quick access */}
@@ -110,6 +102,7 @@ export default function panelAdmin() {
             </View>
             <View className="w-[48%] h-[170px]">
               <QuickCard
+                onPress={() => router.navigate("/admin/tools-view")}
                 title="Herramientas"
                 icon={<Icons.frenchKey size={24} color="#225599" />}
                 bg="#d6c27a"
