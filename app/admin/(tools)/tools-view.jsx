@@ -4,8 +4,11 @@ import { Text, View } from "react-native";
 import { Icons } from "../../../assets/icons";
 import { Button, Surface } from "react-native-paper";
 import BasicInputs from "../../../components/to-forms/BasicInputs";
+import { Picker } from "@react-native-picker/picker";
+import { useState } from "react";
 
 export default function ToolsView() {
+  const [selectedLanguage, setSelectedLanguage] = useState();
   return (
     <ScreenLayout>
       <Stack.Screen
@@ -50,6 +53,18 @@ export default function ToolsView() {
           leftIcon={<Icons.search size="18" color="#225599" />}
           style={{ width: "100%" }}
         />
+
+        <Surface style={{ borderRadius: 15, width: "100%" }}>
+          <Picker
+            selectedValue={selectedLanguage}
+            onValueChange={(itemValue, itemIndex) =>
+              setSelectedLanguage(itemValue)
+            }
+          >
+            <Picker.Item label="Java" value="java" />
+            <Picker.Item label="JavaScript" value="js" />
+          </Picker>
+        </Surface>
       </View>
     </ScreenLayout>
   );
