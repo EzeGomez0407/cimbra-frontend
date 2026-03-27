@@ -58,32 +58,33 @@ export default function WorksView() {
           ),
         }}
       />
+
+      <Surface
+        style={{ shadowColor: "#c7b75b" }}
+        className="mt-8 rounded-[15px] w-full"
+      >
+        <Button
+          onPress={() => {}}
+          mode="contained"
+          icon={() => <Icons.plus size={20} color="#225599" />}
+          buttonColor="#FFD700"
+          textColor="#225599"
+          labelStyle={{ fontSize: 18 }}
+          contentStyle={{ height: 50 }}
+          style={{ borderRadius: 15 }}
+        >
+          Agregar nueva obra
+        </Button>
+      </Surface>
       <ScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{
-          paddingHorizontal: 20,
+          paddingHorizontal: 2,
           flexDirection: "column",
           alignItems: "center",
           paddingBottom: 20,
         }}
       >
-        <Surface
-          style={{ shadowColor: "#c7b75b" }}
-          className="mt-8 rounded-[15px] w-[350px]"
-        >
-          <Button
-            onPress={() => {}}
-            mode="contained"
-            icon={() => <Icons.plus size={20} color="#225599" />}
-            buttonColor="#FFD700"
-            textColor="#225599"
-            labelStyle={{ fontSize: 18 }}
-            contentStyle={{ height: 50 }}
-            style={{ borderRadius: 15 }}
-          >
-            Agregar nueva obra
-          </Button>
-        </Surface>
         <View className="gap-4 mt-5">
           {obras.map((obra) => (
             <CardWork

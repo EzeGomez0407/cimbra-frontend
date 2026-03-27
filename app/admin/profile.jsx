@@ -1,12 +1,10 @@
 import { router, Stack } from "expo-router";
-import { Surface } from "react-native-paper";
+import { Button, Surface } from "react-native-paper";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Avatar } from "react-native-paper";
 
 import CustomButton from "../../components/Button/CustomButton";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
-
-
 
 import { Icons } from "../../assets/icons";
 
@@ -14,23 +12,17 @@ export default function Profile() {
   return (
     <KeyboardLayout>
       <Stack.Screen options={{ headerShown: false }} />
-      <View style={{ flex: 1, justifyContent: "space-between" }}>
+      <View className="flex-1 justify-between">
         {/* contenido */}
         <View>
-          <View
-            style={{
-              backgroundColor: "#0a3a6b",
-              paddingTop: 60,
-              paddingBottom: 30,
-            }}
-          >
+          <View className="bg-blue-primary pt-[60px] pb-[30px]">
             <ProfileHeader />
           </View>
 
           {/* Main */}
           <PersonalDataCard />
           <CompanyCard />
-          <View style={{ paddingHorizontal: 20 }}>
+          <View className="px-[20px]">
             <EmployeesCard />
           </View>
         </View>
@@ -120,10 +112,17 @@ function PersonalDataCard() {
       <View style={stylesUserInfo.header}>
         <Text style={stylesUserInfo.title}>Datos personales</Text>
 
-        <TouchableOpacity style={stylesUserInfo.editBtn}>
-          <Icons.pencil size={14} color="#fff" />
-          <Text style={stylesUserInfo.editText}>Editar</Text>
-        </TouchableOpacity>
+        <Button
+          mode="contained"
+          icon={() => <Icons.pencil size={14} color="#fff" />}
+          buttonColor="#225599"
+          textColor="#fff"
+          labelStyle={{ fontSize: 16 }}
+          contentStyle={{ flexDirection: "row-reverse" }}
+          style={{ borderRadius: 18, alignSelf: "flex-start" }}
+        >
+          Editar
+        </Button>
       </View>
 
       {/* Card */}
@@ -131,7 +130,7 @@ function PersonalDataCard() {
         {/* Item */}
         <View style={stylesUserInfo.item}>
           <View style={stylesUserInfo.iconBox}>
-            <Icons.user size={18} color="#003366" />
+            <Icons.user size={18} color="#225599" />
           </View>
 
           <View style={stylesUserInfo.textContainer}>
@@ -175,14 +174,14 @@ const stylesUserInfo = StyleSheet.create({
   title: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#003366",
+    color: "#225599",
   },
 
   editBtn: {
     flexDirection: "row",
     alignItems: "center",
     gap: 5,
-    backgroundColor: "#003366",
+    backgroundColor: "#225599",
     paddingHorizontal: 12,
     paddingVertical: 6,
     borderRadius: 10,
@@ -220,18 +219,18 @@ const stylesUserInfo = StyleSheet.create({
 
   label: {
     fontSize: 12,
-    color: "#6b7280",
+    color: "#9e9e9e",
   },
 
   value: {
     fontSize: 14,
-    color: "#003366",
+    color: "#225599",
     fontWeight: "500",
   },
 
   divider: {
     height: 1,
-    backgroundColor: "#e5e7eb",
+    backgroundColor: "#9e9e9e",
     marginVertical: 12,
   },
 });
@@ -258,7 +257,7 @@ function CompanyCard() {
             </Text>
 
             <View style={stylesCardCompany.locationRow}>
-              <Icons.mapMarker size={14} color="#003366" />
+              <Icons.mapMarker size={14} color="#225599" />
 
               <Text style={stylesCardCompany.locationText}>
                 Esquina Corrientes
@@ -280,7 +279,7 @@ const stylesCardCompany = StyleSheet.create({
   sectionTitle: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#003366",
+    color: "#225599",
     marginBottom: 10,
   },
 
@@ -291,7 +290,7 @@ const stylesCardCompany = StyleSheet.create({
   },
 
   companyCard: {
-    backgroundColor: "#FFD600",
+    backgroundColor: "#FFD700",
     borderRadius: 20,
     padding: 20,
   },
@@ -300,7 +299,7 @@ const stylesCardCompany = StyleSheet.create({
     width: 45,
     height: 45,
     borderRadius: 12,
-    backgroundColor: "#003366",
+    backgroundColor: "#225599",
     alignItems: "center",
     justifyContent: "center",
   },
@@ -313,7 +312,7 @@ const stylesCardCompany = StyleSheet.create({
   companyName: {
     fontSize: 16,
     fontWeight: "bold",
-    color: "#003366",
+    color: "#225599",
   },
 
   locationRow: {
@@ -325,7 +324,7 @@ const stylesCardCompany = StyleSheet.create({
 
   locationText: {
     fontSize: 12,
-    color: "#003366",
+    color: "#225599",
   },
 });
 
