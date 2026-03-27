@@ -1,5 +1,5 @@
 import { router, Stack } from "expo-router";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 import React from "react";
 
 import CustomButton, {
@@ -10,6 +10,7 @@ import HeaderIcon from "../../components/Button/HeaderIcon";
 import KeyboardLayout from "../../components/layout/KeyboardLayout";
 
 import { Icons } from "../../assets/icons";
+import ScreenLayout from "../../components/layout/ScreenLayout";
 
 export default function panelAdmin() {
   const data = [
@@ -24,7 +25,7 @@ export default function panelAdmin() {
     { text: "Herramienta asignada", time: "2d", color: "#405c4e" },
   ];
   return (
-    <KeyboardLayout>
+    <ScreenLayout>
       <Stack.Screen
         options={{
           headerStyle: {
@@ -63,91 +64,97 @@ export default function panelAdmin() {
           ),
         }}
       />
-
-      <View className="flex-1 px-6 py-6 flex flex-col gap-5 overflow-y-auto">
-        {/* Company card */}
-        <View style={styles.companyCard} className="rounded-3xl p-5 shadow-lg">
-          <View className="flex-row gap-5 items-center">
-            <View className="items-center bg-[#225599] p-3 rounded-2xl">
-              <Icons.building size={28} color="#f9d72d" />
-            </View>
-            <View style={{ flex: 1, alignItems: "flex-start" }}>
-              <Text className="text-base text-placeholder">Tu empresa</Text>
-              <Text className="text-3xl font-semibold text-blue-primary">
-                3Dverse
-              </Text>
-              <Text className="text-base text-placeholder">Administrador</Text>
-            </View>
-          </View>
-        </View>
-
-        {/* Quick access */}
-        <View className="text-blue-primary gap-3">
-          <Text style={{ color: "#225599" }}>Acceso rápido</Text>
-          <View className="flex flex-row flex-wrap justify-between gap-y-4">
-            <View className="w-[48%] h-[170px]">
-              <QuickCard
-                onPress={() => router.navigate("/admin/works-view")}
-                title="Obras"
-                icon={<Icons.building size={24} color="#ffd600" />}
-                bg="#225599"
-              />
-            </View>
-            <View className="w-[48%] h-[170px]">
-              <QuickCard
-                title="Empleados"
-                icon={<Icons.users size={24} color="#fff" />}
-                bg="#4b6658"
-              />
-            </View>
-            <View className="w-[48%] h-[170px]">
-              <QuickCard
-                onPress={() => router.navigate("/admin/tools-view")}
-                title="Herramientas"
-                icon={<Icons.frenchKey size={24} color="#225599" />}
-                bg="#d6c27a"
-              />
-            </View>
-            <View className="w-[48%] h-[170px]">
-              <QuickCard
-                onPress={() => router.navigate("/admin/profile")}
-                title="Mi perfil"
-                icon={<Icons.userCircle size={24} color="#225599" />}
-                bg="#ffd600"
-              />
+      <ScrollView>
+        <View className="flex-1 px-6 py-6 flex flex-col gap-5 overflow-y-auto">
+          {/* Company card */}
+          <View
+            style={styles.companyCard}
+            className="rounded-3xl p-5 shadow-lg"
+          >
+            <View className="flex-row gap-5 items-center">
+              <View className="items-center bg-[#225599] p-3 rounded-2xl">
+                <Icons.building size={28} color="#f9d72d" />
+              </View>
+              <View style={{ flex: 1, alignItems: "flex-start" }}>
+                <Text className="text-base text-placeholder">Tu empresa</Text>
+                <Text className="text-3xl font-semibold text-blue-primary">
+                  3Dverse
+                </Text>
+                <Text className="text-base text-placeholder">
+                  Administrador
+                </Text>
+              </View>
             </View>
           </View>
-        </View>
-        {/* Stats card */}
-        <View style={styles.statsCard}>
-          <Text style={styles.titleCard}>Resumen de hoy</Text>
-          <View style={styles.rowCard}>
-            {data.map((item, index) => (
-              <React.Fragment key={index}>
-                <SummaryItem {...item} />
-                {index < data.length - 1 && <DividerVertical />}
-              </React.Fragment>
+
+          {/* Quick access */}
+          <View className="text-blue-primary gap-3">
+            <Text style={{ color: "#225599" }}>Acceso rápido</Text>
+            <View className="flex flex-row flex-wrap justify-between gap-y-4">
+              <View className="w-[48%] h-[170px]">
+                <QuickCard
+                  onPress={() => router.navigate("/admin/works-view")}
+                  title="Obras"
+                  icon={<Icons.building size={24} color="#ffd600" />}
+                  bg="#225599"
+                />
+              </View>
+              <View className="w-[48%] h-[170px]">
+                <QuickCard
+                  title="Empleados"
+                  icon={<Icons.users size={24} color="#fff" />}
+                  bg="#4b6658"
+                />
+              </View>
+              <View className="w-[48%] h-[170px]">
+                <QuickCard
+                  onPress={() => router.navigate("/admin/tools-view")}
+                  title="Herramientas"
+                  icon={<Icons.frenchKey size={24} color="#225599" />}
+                  bg="#d6c27a"
+                />
+              </View>
+              <View className="w-[48%] h-[170px]">
+                <QuickCard
+                  onPress={() => router.navigate("/admin/profile")}
+                  title="Mi perfil"
+                  icon={<Icons.userCircle size={24} color="#225599" />}
+                  bg="#ffd600"
+                />
+              </View>
+            </View>
+          </View>
+          {/* Stats card */}
+          <View style={styles.statsCard}>
+            <Text style={styles.titleCard}>Resumen de hoy</Text>
+            <View style={styles.rowCard}>
+              {data.map((item, index) => (
+                <React.Fragment key={index}>
+                  <SummaryItem {...item} />
+                  {index < data.length - 1 && <DividerVertical />}
+                </React.Fragment>
+              ))}
+            </View>
+          </View>
+
+          {/* Recent activity */}
+          <View style={styles.activityCard}>
+            <Text style={styles.activitytitle}>Actividad reciente</Text>
+            {activities.map((item, index) => (
+              <ActivityItem key={index} {...item} />
             ))}
           </View>
         </View>
 
-        {/* Recent activity */}
-        <View style={styles.activityCard}>
-          <Text style={styles.activitytitle}>Actividad reciente</Text>
-          {activities.map((item, index) => (
-            <ActivityItem key={index} {...item} />
-          ))}
-        </View>
-      </View>
-
-      {/* Bottom bar */}
-      <CustomButton
-        onPress={() => router.push("/")}
-        textBtnCenter={"Cerrar sesión"}
-        btnCenter={true}
-        iconBtnCenter={<Icons.logOut size={24} color="black" />}
-      />
-    </KeyboardLayout>
+        {/* Bottom bar */}
+        <CustomButton
+          onPress={() => router.push("/")}
+          textBtnCenter={"Cerrar sesión"}
+          btnCenter={true}
+          iconBtnCenter={<Icons.logOut size={24} color="black" />}
+        />
+      </ScrollView>
+    </ScreenLayout>
   );
 }
 
