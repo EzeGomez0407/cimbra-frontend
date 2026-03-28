@@ -200,18 +200,18 @@ export default function ToolsView() {
         </View>
         {/* --------------SELECCION DE CATEGORIA-------------- */}
         <SegmentedButtons
-          value={value}
+          value={"all"}
           onValueChange={setValue}
           buttons={[
             {
-              value: "walk",
+              value: "all",
               label: "Todas",
             },
             {
-              value: "train",
+              value: "Eléctricas",
               label: "Eléctricas",
             },
-            { value: "drive", label: "Manuales" },
+            { value: "Manuales", label: "Manuales" },
           ]}
           theme={{
             colors: {
@@ -230,8 +230,8 @@ export default function ToolsView() {
         />
       </View>
       {/*------------LISTA DE HERRAMIENTAS --------------- */}
-      <ScrollView className="px-2 py-5 pb-20">
-        <View className="flex-column gap-5">
+      <ScrollView className="px-2 py-5 ">
+        <View className="flex-column gap-5 pb-10">
           {tools.map((tool) => (
             <CardTool
               key={tool.id}
