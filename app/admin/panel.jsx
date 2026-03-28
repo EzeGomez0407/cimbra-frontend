@@ -64,7 +64,7 @@ export default function panelAdmin() {
           ),
         }}
       />
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <View className="flex-1 px-6 py-6 flex flex-col gap-5 overflow-y-auto">
           {/* Company card */}
           <View
