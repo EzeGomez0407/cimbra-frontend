@@ -3,7 +3,7 @@ Los usos solo son de ejemplo no son usos exclusivos
 custom-colors: {
         "blue-primary": "#225599", <----PARA CAJAS, ICONOS, FONDOS DE BOTONES
         "yellow-primary": "#FFD700",<----PARA CAJAS, ICONOS, FONDOS DE BOTONES
-        "grey-placeholder": "#9e9e9e", <----PARA TEXTO INFORMATIVO CON POCA IMPORTANCIA COMO placeholders
+        "placeholder": "#9e9e9e", <----PARA TEXTO INFORMATIVO CON POCA IMPORTANCIA COMO placeholders
         "light-yellow": "#c7b75b", <---- PARA BORDES O TEXTO INFORMATIVO DECORATIVO
         "blue-box-info": "#4477ff", <----PARA FONDOS DE CAJAS INFORMATIVAS
         "info": "#405C4D", <----PARA TEXTO DENTRO DE CAJAS INFORMATIVAS
