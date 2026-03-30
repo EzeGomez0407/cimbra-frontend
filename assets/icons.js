@@ -14,6 +14,7 @@ export const Icons = {
   building: (props) => (
     <MaterialCommunityIcons name="office-building-outline" {...props} />
   ),
+  search: (props) => <Feather name="search" {...props} />,
   pencil: (props) => <Feather name="edit-2" {...props} />,
   mapMarker: (props) => <Feather name="map-pin" {...props} />,
   users: (props) => <Feather name="users" {...props} />,

@@ -83,7 +83,8 @@ export default function PostLogin({ name }) {
             colorTitle={"#225599"}
             titleBtn={"Mi perfil"}
             textBtn={"Ver y editar tu información"}
-            icon={<Icons.userCircle size={20} color="#e5c60b" />}
+
+icon={<Icons.userCircle size={20} color="#e5c60b" />}
           />
         </View>
         {/* btn cerrar sesión */}
