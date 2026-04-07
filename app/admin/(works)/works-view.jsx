@@ -1,5 +1,5 @@
 import { ScrollView, Text, View } from "react-native";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 
 import ScreenLayout from "../../../components/layout/ScreenLayout";
 import { Button, Surface } from "react-native-paper";
@@ -64,7 +64,7 @@ export default function WorksView() {
         className="mt-8 rounded-[15px] w-full"
       >
         <Button
-          onPress={() => {}}
+          onPress={() => {router.navigate("admin/create-works")}}
           mode="contained"
           icon={() => <Icons.plus size={20} color="#225599" />}
           buttonColor="#FFD700"
