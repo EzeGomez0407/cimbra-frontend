@@ -5,6 +5,7 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Octicons from "@expo/vector-icons/Octicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 
 export const Icons = {
   user: (props) => <Feather name="user" {...props} />,
@@ -36,4 +37,6 @@ export const Icons = {
   plus: (props) => <Octicons name="plus" {...props} />,
   hammer: (props) => <MaterialIcons name="hardware" {...props} />,
   warning: (props) => <Ionicons name="warning-outline" {...props} />,
+  filter: (props) => <Feather name="filter" {...props} />,
+  magnifyingGlass: (props) => <FontAwesome6 name="magnifying-glass" {...props} />
 };
