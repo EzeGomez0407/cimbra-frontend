@@ -1,4 +1,4 @@
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import ScreenLayout from "../../../components/layout/ScreenLayout";
 import { ScrollView, Text, View } from "react-native";
 import { Icons } from "../../../assets/icons";
@@ -102,6 +102,7 @@ const mandatedList = [
 export default function ToolsView() {
   const [selectedLanguage, setSelectedLanguage] = useState();
   const [value, setValue] = useState("");
+  const router = useRouter();
 
   return (
     <ScreenLayout>
@@ -129,7 +130,7 @@ export default function ToolsView() {
         {/* ----------BOTON AGREGAR HERRAMIENTA------------ */}
         <Surface style={{ borderRadius: 15 }} className="mt-3 w-full">
           <Button
-            onPress={() => {}}
+            onPress={() => router.navigate("/admin/add-tool")}
             mode="contained"
             icon={() => <Icons.plus size={20} color="#225599" />}
             buttonColor="#FFD700"
