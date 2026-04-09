@@ -101,6 +101,7 @@ export default function panelAdmin() {
               </View>
               <View className="w-[48%] h-[170px]">
                 <QuickCard
+                  onPress={() => router.navigate("/admin/employee-view")}
                   title="Empleados"
                   icon={<Icons.users size={24} color="#fff" />}
                   bg="#4b6658"
