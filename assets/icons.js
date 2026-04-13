@@ -43,4 +43,6 @@ export const Icons = {
     <FontAwesome6 name="magnifying-glass" {...props} />
   ),
   arrowDown: (props) => <Entypo name="chevron-down" {...props} />,
+  userPlus: (props) => <Feather name="user-plus" {...props} />,
+  close: (props) => <Ionicons name="close-sharp" {...props} />,
 };
