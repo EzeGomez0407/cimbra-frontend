@@ -1,18 +1,18 @@
 import { Text, TouchableOpacity, View } from "react-native";
+import { Stack } from "expo-router";
+import { useState } from "react";
 import {
-  List,
-  Menu,
   PaperProvider,
   Button,
   Portal,
-  Icon,
   Avatar,
+  Modal,
 } from "react-native-paper";
+
 import ScreenLayout from "../../../components/layout/ScreenLayout";
 import KeyboardLayout from "../../../components/layout/KeyboardLayout";
+
 import { Icons } from "../../../assets/icons";
-import { Stack } from "expo-router";
-import { useState } from "react";
 import BasicInputs from "../../../components/to-forms/BasicInputs";
 import Dropdown from "../../../components/dropdown/Dropdown";
 
@@ -20,7 +20,6 @@ export default function EmployeeView() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filtroObra, setFiltroObra] = useState("todos");
   const [filtroRol, setFiltroRol] = useState("todos");
-  const [showFiltroMenu, setShowFiltroMenu] = useState(false);
 
   // Datos de ejemplo
   const empleados = [
@@ -108,8 +107,6 @@ export default function EmployeeView() {
     return matchSearch && matchObra && matchRol;
   });
 
-  console.log(empleadosFiltrados);
-
   const contadorEncargados = empleados.filter(
     (e) => e.rol === "encargado"
   ).length;
@@ -117,11 +114,29 @@ export default function EmployeeView() {
     (e) => e.rol === "operario"
   ).length;
 
-  const [expanded, setExpanded] = useState(false);
+  /* estados para el modal de invitacion de empleado */
+  const [visible, setVisible] = useState(false);
 
-  const [open, setOpen] = useState(false);
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false);
 
-  const [roleExpanded, setRoleExpanded] = useState(false);
+  const [copiedKey, setCopiedKey] = useState(null);
+
+  // Generar keys únicas para cada tipo de invitación
+  const encargadoKey =
+    "ENC-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+  const operarioKey =
+    "OPR-" + Math.random().toString(36).substring(2, 10).toUpperCase();
+  const baseUrl = window.location.origin;
+
+  const handleCopyLink = (tipo) => {
+    const key = tipo === "encargado" ? encargadoKey : operarioKey;
+    const link = `${baseUrl}/invitacion/${tipo}?key=${key}`;
+    console.log(link);
+    setCopiedKey(tipo);
+    setTimeout(() => setCopiedKey(null), 2000);
+  };
+
   return (
     <PaperProvider>
       <ScreenLayout>
@@ -211,7 +226,7 @@ export default function EmployeeView() {
               </View>
             </View>
             {/* Lista de empleados */}
-            <View className="space-y-3 gap-3">
+            <View className="space-y-3 mb-7 gap-3">
               {empleadosFiltrados.map((empleado, index) => (
                 <TouchableOpacity
                   key={empleado.id ?? index}
@@ -279,7 +294,158 @@ export default function EmployeeView() {
                 </View>
               )}
             </View>
+
+            {/* Boton de Invitar empleado */}
+            <Portal>
+              <Button
+                icon={() => <Icons.userPlus size={16} color={"#003366"} />}
+                style={{
+                  position: "absolute",
+                  padding: 5,
+                  left: 15,
+                  right: 15,
+                  bottom: 70,
+                  backgroundColor: "#FFD700",
+                  opacity: visible ? 0 : 1,
+                }}
+                disabled={visible}
+                onPress={showModal}
+                textColor="#003366"
+              >
+                Invitar Empleados
+              </Button>
+            </Portal>
           </View>
+          {/* modal para la invitación de empleado */}
+          <Portal>
+            <Modal
+              visible={visible}
+              onDismiss={hideModal}
+              contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
+            >
+              <View className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl">
+                {/* Header del modal */}
+                <View className="flex-row items-center justify-between mb-5">
+                  <Text style={{ fontSize: 18 }} className="text-[#003366]">
+                    Invitar empleados
+                  </Text>
+                  <Button
+                    buttonColor="#FFD700"
+                    onPress={() => setVisible(false)}
+                  >
+                    <Icons.close size={18} color={"#003366"} />
+                  </Button>
+                </View>
+
+                <Text style={{ fontSize: 14 }} className="text-[#405C4D] mb-6">
+                  Compartí estos links de invitación según el rol del empleado
+                </Text>
+
+                {/* Link para Encargados */}
+                <View className="mb-1">
+                  <View className="flex-row items-center gap-2 mb-2">
+                    <View className="w-2 h-2 rounded-full bg-[#FFD700]" />
+                    <Text style={{ fontSize: 14 }} className="text-[#003366]">
+                      Encargado
+                    </Text>
+                  </View>
+                  <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+                    <Text
+                      style={{ fontSize: 13 }}
+                      className="text-[#405C4D] mb-1"
+                    >
+                      Link de invitación
+                    </Text>
+                    <Text
+                      style={{ fontSize: 13 }}
+                      className="text-[#003366]  mb-3"
+                    >
+                      {baseUrl}/invitacion/encargado?key={encargadoKey}
+                    </Text>
+                    <View className="items-stretch">
+                      <View className=" bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                        <Text
+                          style={{ fontSize: 13 }}
+                          className="text-[#405C4D] mb-0.5"
+                        >
+                          Key de acceso
+                        </Text>
+                        <Text
+                          style={{ fontSize: 13 }}
+                          className="text-[#003366]"
+                        >
+                          {encargadoKey}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Button
+                    onPress={() => handleCopyLink("encargado")}
+                    textColor="#003366"
+                    buttonColor="#FFD700"
+                    labelStyle={{ fontSize: 14 }}
+                  >
+                    {copiedKey === "encargado"
+                      ? "¡Copiado!"
+                      : "Copiar link completo"}
+                  </Button>
+                </View>
+
+                {/* Divider */}
+                <View className="h-px bg-[#E7D77B] my-5" />
+
+                {/* Link para Operarios */}
+                <View>
+                  <View className="flex-row items-center gap-2 mb-2">
+                    <View className="w-2 h-2 rounded-full bg-[#405C4D]" />
+                    <Text style={{ fontSize: 14 }} className="text-[#003366] ">
+                      Operario
+                    </Text>
+                  </View>
+                  <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+                    <Text
+                      style={{ fontSize: 13 }}
+                      className="text-[#405C4D]  mb-1"
+                    >
+                      Link de invitación
+                    </Text>
+                    <Text
+                      style={{ fontSize: 13 }}
+                      className="text-[#003366]  mb-3"
+                    >
+                      {baseUrl}/invitacion/operario?key={operarioKey}
+                    </Text>
+                    <View className="items-stretch">
+                      <View className="bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                        <Text
+                          style={{ fontSize: 13 }}
+                          className="text-[#405C4D]  mb-0.5"
+                        >
+                          Key de acceso
+                        </Text>
+                        <Text
+                          style={{ fontSize: 13 }}
+                          className="text-[#003366] "
+                        >
+                          {operarioKey}
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                  <Button
+                    onPress={() => handleCopyLink("operario")}
+                    textColor="#003366"
+                    buttonColor="#FFD700"
+                    labelStyle={{ fontSize: 14 }}
+                  >
+                    {copiedKey === "operario"
+                      ? "¡Copiado!"
+                      : "Copiar link completo"}
+                  </Button>
+                </View>
+              </View>
+            </Modal>
+          </Portal>
         </KeyboardLayout>
       </ScreenLayout>
     </PaperProvider>
