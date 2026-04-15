@@ -6,12 +6,11 @@ import {
   Modal,
   PaperProvider,
   Surface,
-  TextInput,
   Button,
   Portal,
   FAB,
 } from "react-native-paper";
-import { FlatList, Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View } from "react-native";
 
 import ScreenLayout from "../../../components/layout/ScreenLayout";
 import KeyboardLayout from "../../../components/layout/KeyboardLayout";
@@ -85,7 +84,6 @@ export default function CreateWorks() {
     // 2. filtro por búsqueda
     .filter((tool) => tool.name.toLowerCase().includes(search.toLowerCase()));
 
-  console.log(filteredTools);
   const [toolsExpanded, setToolsExpanded] = useState(false);
 
   const updateQty = (id, value) => {
@@ -98,79 +96,81 @@ export default function CreateWorks() {
 
   return (
     <PaperProvider>
-      <KeyboardLayout>
-        <Stack.Screen
-          options={{
-            headerStyle: {
-              backgroundColor: "#225599",
-              color: "#fff",
-            },
-            headerLeft: () => (
-              <View className="py-2 pt-5 gap-3 flex-row items-center">
-                <View className="self-start p-3 bg-[#FFD700] rounded-2xl mb-2">
-                  <Icons.building size={24} color="#225599" />
+      <ScreenLayout>
+        <KeyboardLayout>
+          <Stack.Screen
+            options={{
+              headerStyle: {
+                backgroundColor: "#225599",
+                color: "#fff",
+              },
+              headerLeft: () => (
+                <View className="py-2 pt-5 gap-3 flex-row items-center">
+                  <View className="self-start p-3 bg-[#FFD700] rounded-2xl mb-2">
+                    <Icons.building size={24} color="#225599" />
+                  </View>
+                  <Text className="text-xl text-[#c7c77b]">
+                    {" "}
+                    Crear Nueva Obra
+                  </Text>
                 </View>
-                <Text className="text-xl text-[#c7c77b]">
-                  {" "}
-                  Crear Nueva Obra
-                </Text>
-              </View>
-            ),
-          }}
-        />
-
-        <View className="gap-4 mx-3 mt-5 mb-12 pb-12">
-          <WorkForm
-            form={form}
-            setForm={setForm}
-            expanded={expanded}
-            handlePress={handlePress}
-            Managers={Managers}
+              ),
+            }}
           />
 
-          <View style={{ marginHorizontal: 5 }}>
-            <Text
-              style={{ fontSize: 18, fontWeight: "bold", color: "#003366" }}
-            >
-              Herramientas del almacenamiento
-            </Text>
-
-            <SearchBar
-              filter={filter}
-              setFilter={setFilter}
-              filters={filters}
-              toolsExpanded={toolsExpanded}
-              setToolsExpanded={setToolsExpanded}
-              search={search}
-              setSearch={setSearch}
+          <View className="gap-4 mx-3 mt-5  pb-12">
+            <WorkForm
+              form={form}
+              setForm={setForm}
+              expanded={expanded}
+              handlePress={handlePress}
+              Managers={Managers}
             />
 
-            {filteredTools.length == 0 ? (
-              <Text>No se encontraron herramientas</Text>
-            ) : (
-              filteredTools.map((item) => (
-                <ToolItem key={item.id} item={item} onChange={updateQty} />
-              ))
-            )}
+            <View style={{ marginHorizontal: 5 }}>
+              <Text
+                style={{ fontSize: 18, fontWeight: "bold", color: "#003366" }}
+              >
+                Herramientas del almacenamiento
+              </Text>
+
+              <SearchBar
+                filter={filter}
+                setFilter={setFilter}
+                filters={filters}
+                toolsExpanded={toolsExpanded}
+                setToolsExpanded={setToolsExpanded}
+                search={search}
+                setSearch={setSearch}
+              />
+
+              {filteredTools.length == 0 ? (
+                <Text>No se encontraron herramientas</Text>
+              ) : (
+                filteredTools.map((item) => (
+                  <ToolItem key={item.id} item={item} onChange={updateQty} />
+                ))
+              )}
+            </View>
+            {/* btn guardar obra */}
+            <Portal>
+              <FAB
+                icon="plus"
+                label="Crear obra"
+                onPress={() => console.log("crear")}
+                style={{
+                  position: "absolute",
+                  left: 15,
+                  right: 15,
+                  bottom: 70,
+                  backgroundColor: "#FFD700",
+                }}
+                color="#003366"
+              />
+            </Portal>
           </View>
-          {/* btn guardar obra */}
-          <Portal>
-            <FAB
-              icon="plus"
-              label="Crear obra"
-              onPress={() => console.log("crear")}
-              style={{
-                position: "absolute",
-                left: 15,
-                right: 15,
-                bottom: 70,
-                backgroundColor: "#FFD700",
-              }}
-              color="#003366"
-            />
-          </Portal>
-        </View>
-      </KeyboardLayout>
+        </KeyboardLayout>
+      </ScreenLayout>
     </PaperProvider>
   );
 }

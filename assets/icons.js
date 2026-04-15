@@ -5,7 +5,8 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import Octicons from "@expo/vector-icons/Octicons";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
+import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
+import Entypo from "@expo/vector-icons/Entypo";
 
 export const Icons = {
   user: (props) => <Feather name="user" {...props} />,
@@ -38,5 +39,10 @@ export const Icons = {
   hammer: (props) => <MaterialIcons name="hardware" {...props} />,
   warning: (props) => <Ionicons name="warning-outline" {...props} />,
   filter: (props) => <Feather name="filter" {...props} />,
-  magnifyingGlass: (props) => <FontAwesome6 name="magnifying-glass" {...props} />
+  magnifyingGlass: (props) => (
+    <FontAwesome6 name="magnifying-glass" {...props} />
+  ),
+  arrowDown: (props) => <Entypo name="chevron-down" {...props} />,
+  userPlus: (props) => <Feather name="user-plus" {...props} />,
+  close: (props) => <Ionicons name="close-sharp" {...props} />,
 };
