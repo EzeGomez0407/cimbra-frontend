@@ -22,6 +22,7 @@ export default function BasicInputs({
       outlineColor="#c7b75b"
       activeOutlineColor="#FFD700"
       outlineStyle={{ borderRadius: 14 }}
+      style={{ backgroundColor: "white", width: "100%" }}
     />
   );
 }

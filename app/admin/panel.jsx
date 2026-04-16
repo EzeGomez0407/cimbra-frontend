@@ -11,6 +11,7 @@ import KeyboardLayout from "../../components/layout/KeyboardLayout";
 
 import { Icons } from "../../assets/icons";
 import ScreenLayout from "../../components/layout/ScreenLayout";
+import { Surface } from "react-native-paper";
 
 export default function panelAdmin() {
   const data = [
@@ -89,7 +90,6 @@ export default function panelAdmin() {
 
           {/* Quick access */}
           <View className="text-blue-primary gap-3">
-            <Text style={{ color: "#225599" }}>Acceso rápido</Text>
             <View className="flex flex-row flex-wrap justify-between gap-y-4">
               <View className="w-[48%] h-[170px]">
                 <QuickCard
@@ -126,7 +126,7 @@ export default function panelAdmin() {
             </View>
           </View>
           {/* Stats card */}
-          <View style={styles.statsCard}>
+          <Surface style={styles.statsCard}>
             <Text style={styles.titleCard}>Resumen de hoy</Text>
             <View style={styles.rowCard}>
               {data.map((item, index) => (
@@ -136,15 +136,15 @@ export default function panelAdmin() {
                 </React.Fragment>
               ))}
             </View>
-          </View>
+          </Surface>
 
           {/* Recent activity */}
-          <View style={styles.activityCard}>
+          <Surface style={styles.activityCard}>
             <Text style={styles.activitytitle}>Actividad reciente</Text>
             {activities.map((item, index) => (
               <ActivityItem key={index} {...item} />
             ))}
-          </View>
+          </Surface>
         </View>
 
         {/* Bottom bar */}
@@ -176,10 +176,8 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   statsCard: {
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#fefefe",
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#e6d89c",
     padding: 20,
   },
   titleCard: {
@@ -193,10 +191,8 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
   },
   activityCard: {
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#fefefe",
     borderRadius: 20,
-    borderWidth: 1,
-    borderColor: "#e6d89c",
     padding: 20,
     gap: 15,
   },
