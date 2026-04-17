@@ -38,7 +38,6 @@ export default function CreateWorks() {
 
   const handlePress = () => {
     setExpanded(!expanded);
-    console.log(form);
   };
 
   //estados para las herramientas
@@ -89,8 +88,8 @@ export default function CreateWorks() {
   const updateQty = (id, value) => {
     setTools((prev) =>
       prev.map((t) =>
-        t.id === id ? { ...t, qty: Math.max(0, Math.min(value, t.stock)) } : t
-      )
+        t.id === id ? { ...t, qty: Math.max(0, Math.min(value, t.stock)) } : t,
+      ),
     );
   };
 
