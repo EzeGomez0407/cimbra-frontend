@@ -9,7 +9,7 @@ import KeyboardLayout from "../../../components/layout/KeyboardLayout";
 import { Icons } from "../../../assets/icons";
 import BasicInputs from "../../../components/to-forms/BasicInputs";
 import { Picker } from "@react-native-picker/picker";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { FlatList } from "react-native";
 
 const empleados = [
   {
@@ -87,7 +87,6 @@ const obras = [
 const role = ["encargado", "operario"];
 
 export default function EmployeeView() {
-  const inset = useSafeAreaInsets();
   const [searchTerm, setSearchTerm] = useState("");
 
   const mandatedList = empleados.filter((e) => e.rol == role[0]);
@@ -205,59 +204,60 @@ export default function EmployeeView() {
       <KeyboardLayout>
         {/* Lista de empleados */}
         <View className="space-y-3 mb-7 gap-3">
-          {empleados.map((empleado, index) => (
-            <TouchableOpacity
-              key={empleado.id ?? index}
-              className="w-full bg-white rounded-2xl p-4 border border-[#E7D77B]/40"
-            >
-              <View className="flex-row items-center gap-3">
-                {/* Avatar */}
-                <View className="w-12 h-12 flex items-center justify-center shrink-0">
-                  <Avatar.Text
-                    style={{ backgroundColor: "#003366" }}
-                    size={50}
-                    color="#FFD700"
-                    label={empleado.nombre
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .slice(0, 2)}
-                  />
-                </View>
-                {/* Info */}
-                <View className="flex-1 min-w-0">
-                  <Text
-                    style={{ fontSize: 16 }}
-                    className="text-[#003366] text-sm mb-1"
-                  >
-                    {empleado.nombre}
-                  </Text>
-                  <View className="gap-2 self-start mb-1">
+          <FlatList
+            data={empleados}
+            renderItem={({ item }) => (
+              <TouchableOpacity className="w-full bg-white rounded-2xl p-4 border border-[#E7D77B]/40">
+                <View className="flex-row items-center gap-3">
+                  {/* Avatar */}
+                  <View className="w-12 h-12 flex items-center justify-center shrink-0">
+                    <Avatar.Text
+                      style={{ backgroundColor: "#003366" }}
+                      size={50}
+                      color="#FFD700"
+                      label={item.nombre
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .slice(0, 2)}
+                    />
+                  </View>
+                  {/* Info */}
+                  <View className="flex-1 min-w-0">
                     <Text
-                      style={{ fontSize: 14 }}
-                      className={`px-2 py-1 rounded-full text-xs ${
-                        empleado.rol === "encargado"
-                          ? "bg-[#FFD700]/20 text-[#003366]"
-                          : "bg-[#405C4D]/10 text-[#405C4D]"
-                      }`}
+                      style={{ fontSize: 16 }}
+                      className="text-[#003366] text-sm mb-1"
                     >
-                      {empleado.rol === "encargado" ? "Encargado" : "Operario"}
+                      {item.nombre}
+                    </Text>
+                    <View className="gap-2 self-start mb-1">
+                      <Text
+                        style={{ fontSize: 14 }}
+                        className={`px-2 py-1 rounded-full text-xs ${
+                          item.rol === "encargado"
+                            ? "bg-[#FFD700]/20 text-[#003366]"
+                            : "bg-[#405C4D]/10 text-[#405C4D]"
+                        }`}
+                      >
+                        {item.rol === "encargado" ? "Encargado" : "Operario"}
+                      </Text>
+                    </View>
+
+                    <Text
+                      style={{ fontSize: 15 }}
+                      numberOfLines={1}
+                      className="text-[#405C4D] text-xs "
+                    >
+                      {item.obraAsignada || "Sin asignar"}
                     </Text>
                   </View>
-
-                  <Text
-                    style={{ fontSize: 15 }}
-                    numberOfLines={1}
-                    className="text-[#405C4D] text-xs "
-                  >
-                    {empleado.obraAsignada || "Sin asignar"}
-                  </Text>
+                  {/* Arrow */}
+                  <Icons.arrowRight size={18} color={"#405C4D"} />
                 </View>
-                {/* Arrow */}
-                <Icons.arrowRight size={18} color={"#405C4D"} />
-              </View>
-            </TouchableOpacity>
-          ))}
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+          />
 
           {empleados.length === 0 && (
             <View className=" py-12">
@@ -419,4 +419,13 @@ export default function EmployeeView() {
       </Button>
     </ScreenLayout>
   );
+}
+
+export function FlatListCustom({ data, renderItem, ...props }) {
+  <FlatList
+    data={data}
+    renderItem={renderItem}
+    keyExtractor={(item) => item.id}
+    {...props}
+  />;
 }
