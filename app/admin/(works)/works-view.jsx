@@ -124,7 +124,7 @@ function CardWork({ name, mandated, alerts }) {
         <View
           className={`${
             alerts > 0 ? "bg-red-100" : "bg-green-50"
-          }  flex-row items-center justify-center w-[95px] px-4 py-1 rounded-2xl ml-1`}
+          }  flex-row items-center justify-center self-start px-4 py-1 rounded-2xl ml-1 `}
         >
           {alerts > 0 && <Icons.warning size={12} color="#d82828" />}
           <Text className={`${alerts > 0 ? "text-red-600" : "text-green-600"}`}>
