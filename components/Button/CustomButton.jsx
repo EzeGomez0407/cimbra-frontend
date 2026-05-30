@@ -214,7 +214,7 @@ export function QuickCard({ title, icon, bg, color, ...props }) {
         }}
         style={{ borderRadius: 15, width: "100%", height: "100%" }}
       >
-        <View className="-translate-x-1 h-full w-full flex-column justify-center items-center gap-2">
+        <View className="flex-column justify-center items-center gap-2">
           <View
             style={{ backgroundColor: bg, borderRadius: 15 }}
             className="self p-4"
@@ -223,6 +223,9 @@ export function QuickCard({ title, icon, bg, color, ...props }) {
           </View>
           <Text className="text-[#225599] text-lg font-medium">{title}</Text>
         </View>
+        {/* <View className="flex-column justify-center items-center gap-2">
+          <Text>Probando</Text>
+        </View> */}
       </Button>
     </Surface>
   );
