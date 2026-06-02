@@ -98,10 +98,6 @@ export default function EmployeeView() {
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
 
-  // Generar keys únicas para cada tipo de invitación
-  const encargadoKey = "64a6s54d6a5s4d6as54d";
-  const operarioKey = "asjndas4442145a5sd";
-
   return (
     <ScreenLayout>
       <Stack.Screen
@@ -165,8 +161,8 @@ export default function EmployeeView() {
             }}
           >
             <Picker
-              selectedValue={() => {}}
-              onValueChange={() => {}}
+              selectedValue={() => { }}
+              onValueChange={() => { }}
               style={{ color: "#225599" }}
             >
               <Picker.Item label="Todas las obras" value="java" />
@@ -187,8 +183,8 @@ export default function EmployeeView() {
             }}
           >
             <Picker
-              selectedValue={() => {}}
-              onValueChange={() => {}}
+              selectedValue={() => { }}
+              onValueChange={() => { }}
               style={{ color: "#225599" }}
             >
               <Picker.Item label="Todos los roles" value="java" />
@@ -233,11 +229,10 @@ export default function EmployeeView() {
                     <View className="gap-2 self-start mb-1">
                       <Text
                         style={{ fontSize: 14 }}
-                        className={`px-2 py-1 rounded-full text-xs ${
-                          item.rol === "encargado"
+                        className={`px-2 py-1 rounded-full text-xs ${item.rol === "encargado"
                             ? "bg-[#FFD700]/20 text-[#003366]"
                             : "bg-[#405C4D]/10 text-[#405C4D]"
-                        }`}
+                          }`}
                       >
                         {item.rol === "encargado" ? "Encargado" : "Operario"}
                       </Text>
@@ -274,133 +269,8 @@ export default function EmployeeView() {
         {/* Boton de Invitar empleado */}
         {/* </View> */}
         {/* modal para la invitación de empleado */}
+          <ModalEmployee visible={visible} hideModal={hideModal} setVisible={setVisible} />
 
-        <Modal
-          animationType="slide"
-          // transparent={true}
-          backdropColor="#504f4f75"
-          visible={visible}
-          onRequestClose={() => {
-            hideModal();
-          }}
-          // ----------
-          // contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
-        >
-          <View className="flex-1 items-center justify-center">
-            <View className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl">
-              {/* Header del modal */}
-              <View className="flex-row items-center justify-between mb-5">
-                <Text style={{ fontSize: 18 }} className="text-[#003366]">
-                  Invitar empleados
-                </Text>
-                <Button buttonColor="#FFD700" onPress={() => setVisible(false)}>
-                  <Icons.close size={18} color={"#003366"} />
-                </Button>
-              </View>
-
-              <Text style={{ fontSize: 14 }} className="text-[#405C4D] mb-6">
-                Compartí estos links de invitación según el rol del empleado
-              </Text>
-
-              {/* Link para Encargados */}
-              <View className="mb-1">
-                <View className="flex-row items-center gap-2 mb-2">
-                  <View className="w-2 h-2 rounded-full bg-[#FFD700]" />
-                  <Text style={{ fontSize: 14 }} className="text-[#003366]">
-                    Encargado
-                  </Text>
-                </View>
-                <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#405C4D] mb-1"
-                  >
-                    Link de invitación
-                  </Text>
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#003366]  mb-3"
-                  >
-                    https://localhost:8709/invitacion/encargado?key=
-                    {encargadoKey}
-                  </Text>
-                  <View className="items-stretch">
-                    <View className=" bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#405C4D] mb-0.5"
-                      >
-                        Key de acceso
-                      </Text>
-                      <Text style={{ fontSize: 13 }} className="text-[#003366]">
-                        {encargadoKey}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Button
-                  onPress={() => {}}
-                  textColor="#003366"
-                  buttonColor="#FFD700"
-                  labelStyle={{ fontSize: 14 }}
-                >
-                  Copiar link completo
-                </Button>
-              </View>
-
-              {/* Divider */}
-              <View className="h-px bg-[#E7D77B] my-5" />
-
-              {/* Link para Operarios */}
-              <View>
-                <View className="flex-row items-center gap-2 mb-2">
-                  <View className="w-2 h-2 rounded-full bg-[#405C4D]" />
-                  <Text style={{ fontSize: 14 }} className="text-[#003366] ">
-                    Operario
-                  </Text>
-                </View>
-                <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#405C4D]  mb-1"
-                  >
-                    Link de invitación
-                  </Text>
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#003366]  mb-3"
-                  >
-                    https://localhost:8709/invitacion/operario?key={operarioKey}
-                  </Text>
-                  <View className="items-stretch">
-                    <View className="bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#405C4D]  mb-0.5"
-                      >
-                        Key de acceso
-                      </Text>
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#003366] "
-                      >
-                        {operarioKey}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Button
-                  onPress={() => {}}
-                  textColor="#003366"
-                  buttonColor="#FFD700"
-                  labelStyle={{ fontSize: 14 }}
-                >
-                  Copiar link completo
-                </Button>
-              </View>
-            </View>
-          </View>
-        </Modal>
       </KeyboardLayout>
       <Button
         icon={() => <Icons.userPlus size={16} color={"#003366"} />}
@@ -421,11 +291,147 @@ export default function EmployeeView() {
   );
 }
 
-export function FlatListCustom({ data, renderItem, ...props }) {
+/* export function FlatListCustom({ data, renderItem, ...props }) {
   <FlatList
     data={data}
     renderItem={renderItem}
     keyExtractor={(item) => item.id}
     {...props}
   />;
+} */
+
+export function ModalEmployee({ visible, hideModal, setVisible }) {
+
+  // Generar keys únicas para cada tipo de invitación
+  const encargadoKey = "64a6s54d6a5s4d6as54d";
+  const operarioKey = "asjndas4442145a5sd";
+
+  return (
+    <Modal
+      animationType="slide"
+      // transparent={true}
+      backdropColor="#504f4f75"
+      visible={visible}
+      onRequestClose={() => {
+        hideModal();
+      }}
+    // ----------
+    // contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
+    >
+      <View className="flex-1 items-center justify-center">
+        <View className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl">
+          {/* Header del modal */}
+          <View className="flex-row items-center justify-between mb-5">
+            <Text style={{ fontSize: 18 }} className="text-[#003366]">
+              Invitar empleados
+            </Text>
+            <Button buttonColor="#FFD700" onPress={() => setVisible(false)}>
+              <Icons.close size={18} color={"#003366"} />
+            </Button>
+          </View>
+
+          <Text style={{ fontSize: 14 }} className="text-[#405C4D] mb-6">
+            Compartí estos links de invitación según el rol del empleado
+          </Text>
+
+          {/* Link para Encargados */}
+          <View className="mb-1">
+            <View className="flex-row items-center gap-2 mb-2">
+              <View className="w-2 h-2 rounded-full bg-[#FFD700]" />
+              <Text style={{ fontSize: 14 }} className="text-[#003366]">
+                Encargado
+              </Text>
+            </View>
+            <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#405C4D] mb-1"
+              >
+                Link de invitación
+              </Text>
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#003366]  mb-3"
+              >
+                https://localhost:8709/invitacion/encargado?key=
+                {encargadoKey}
+              </Text>
+              <View className="items-stretch">
+                <View className=" bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#405C4D] mb-0.5"
+                  >
+                    Key de acceso
+                  </Text>
+                  <Text style={{ fontSize: 13 }} className="text-[#003366]">
+                    {encargadoKey}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Button
+              onPress={() => { }}
+              textColor="#003366"
+              buttonColor="#FFD700"
+              labelStyle={{ fontSize: 14 }}
+            >
+              Copiar link completo
+            </Button>
+          </View>
+
+          {/* Divider */}
+          <View className="h-px bg-[#E7D77B] my-5" />
+
+          {/* Link para Operarios */}
+          <View>
+            <View className="flex-row items-center gap-2 mb-2">
+              <View className="w-2 h-2 rounded-full bg-[#405C4D]" />
+              <Text style={{ fontSize: 14 }} className="text-[#003366] ">
+                Operario
+              </Text>
+            </View>
+            <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#405C4D]  mb-1"
+              >
+                Link de invitación
+              </Text>
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#003366]  mb-3"
+              >
+                https://localhost:8709/invitacion/operario?key={operarioKey}
+              </Text>
+              <View className="items-stretch">
+                <View className="bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#405C4D]  mb-0.5"
+                  >
+                    Key de acceso
+                  </Text>
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#003366] "
+                  >
+                    {operarioKey}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Button
+              onPress={() => { }}
+              textColor="#003366"
+              buttonColor="#FFD700"
+              labelStyle={{ fontSize: 14 }}
+            >
+              Copiar link completo
+            </Button>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  )
 }
