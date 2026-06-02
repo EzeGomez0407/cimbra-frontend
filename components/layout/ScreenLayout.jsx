@@ -5,7 +5,7 @@ export default function ScreenLayout({ children }) {
   const insets = useSafeAreaInsets();
   return (
     <View
-      className="px-3 flex-1 bg-white"
+      className="px-3 py-3 flex-1 bg-white"
       style={{ marginBottom: insets.bottom }}
     >
       {children}

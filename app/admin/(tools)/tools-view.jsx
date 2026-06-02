@@ -128,7 +128,7 @@ export default function ToolsView() {
       />
       <View className="w-full items-center gap-4">
         {/* ----------BOTON AGREGAR HERRAMIENTA------------ */}
-        <Surface style={{ borderRadius: 15 }} className="mt-3 w-full">
+        <Surface style={{ borderRadius: 15, width: "100%" }} >
           <Button
             onPress={() => router.navigate("/admin/add-tool")}
             mode="contained"

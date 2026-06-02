@@ -9,7 +9,7 @@ import KeyboardLayout from "../../../components/layout/KeyboardLayout";
 import { Icons } from "../../../assets/icons";
 import BasicInputs from "../../../components/to-forms/BasicInputs";
 import { Picker } from "@react-native-picker/picker";
-import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { FlatList } from "react-native";
 
 const empleados = [
   {
@@ -87,7 +87,6 @@ const obras = [
 const role = ["encargado", "operario"];
 
 export default function EmployeeView() {
-  const inset = useSafeAreaInsets();
   const [searchTerm, setSearchTerm] = useState("");
 
   const mandatedList = empleados.filter((e) => e.rol == role[0]);
@@ -98,10 +97,6 @@ export default function EmployeeView() {
 
   const showModal = () => setVisible(true);
   const hideModal = () => setVisible(false);
-
-  // Generar keys únicas para cada tipo de invitación
-  const encargadoKey = "64a6s54d6a5s4d6as54d";
-  const operarioKey = "asjndas4442145a5sd";
 
   return (
     <ScreenLayout>
@@ -137,7 +132,7 @@ export default function EmployeeView() {
 
       {/* <View className="flex-1 gap-2 px-2 py-2 "> */}
       {/* Buscador y filtros */}
-      <View className="mb-4 gap-5 py-2">
+      <View className="mb-4 gap-5 py-2  px-[4%]">
         {/* Buscador */}
         <BasicInputs
           value={searchTerm}
@@ -153,7 +148,7 @@ export default function EmployeeView() {
             flexDirection: "row",
             height: 50,
           }}
-          className="gap-2 justify-center content-center items-center"
+          className=" justify-between items-center"
         >
           {/* Filtro por obra */}
           <Surface
@@ -166,8 +161,8 @@ export default function EmployeeView() {
             }}
           >
             <Picker
-              selectedValue={() => {}}
-              onValueChange={() => {}}
+              selectedValue={() => { }}
+              onValueChange={() => { }}
               style={{ color: "#225599" }}
             >
               <Picker.Item label="Todas las obras" value="java" />
@@ -188,8 +183,8 @@ export default function EmployeeView() {
             }}
           >
             <Picker
-              selectedValue={() => {}}
-              onValueChange={() => {}}
+              selectedValue={() => { }}
+              onValueChange={() => { }}
               style={{ color: "#225599" }}
             >
               <Picker.Item label="Todos los roles" value="java" />
@@ -204,60 +199,60 @@ export default function EmployeeView() {
 
       <KeyboardLayout>
         {/* Lista de empleados */}
-        <View className="space-y-3 mb-7 gap-3">
-          {empleados.map((empleado, index) => (
-            <TouchableOpacity
-              key={empleado.id ?? index}
-              className="w-full bg-white rounded-2xl p-4 border border-[#E7D77B]/40"
-            >
-              <View className="flex-row items-center gap-3">
-                {/* Avatar */}
-                <View className="w-12 h-12 flex items-center justify-center shrink-0">
-                  <Avatar.Text
-                    style={{ backgroundColor: "#003366" }}
-                    size={50}
-                    color="#FFD700"
-                    label={empleado.nombre
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")
-                      .slice(0, 2)}
-                  />
-                </View>
-                {/* Info */}
-                <View className="flex-1 min-w-0">
-                  <Text
-                    style={{ fontSize: 16 }}
-                    className="text-[#003366] text-sm mb-1"
-                  >
-                    {empleado.nombre}
-                  </Text>
-                  <View className="gap-2 self-start mb-1">
+        <View className="space-y-3 mb-7 gap-3  px-[4%]">
+          <FlatList
+            data={empleados}
+            renderItem={({ item }) => (
+              <TouchableOpacity className="w-full bg-white rounded-2xl p-4 border border-light-yellow my-2">
+                <View className="flex-row items-center gap-3">
+                  {/* Avatar */}
+                  <View className="w-12 h-12 flex items-center justify-center shrink-0">
+                    <Avatar.Text
+                      style={{ backgroundColor: "#003366" }}
+                      size={50}
+                      color="#FFD700"
+                      label={item.nombre
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")
+                        .slice(0, 2)}
+                    />
+                  </View>
+                  {/* Info */}
+                  <View className="flex-1 min-w-0">
                     <Text
-                      style={{ fontSize: 14 }}
-                      className={`px-2 py-1 rounded-full text-xs ${
-                        empleado.rol === "encargado"
-                          ? "bg-[#FFD700]/20 text-[#003366]"
-                          : "bg-[#405C4D]/10 text-[#405C4D]"
-                      }`}
+                      style={{ fontSize: 16 }}
+                      className="text-[#003366] text-sm mb-1"
                     >
-                      {empleado.rol === "encargado" ? "Encargado" : "Operario"}
+                      {item.nombre}
+                    </Text>
+                    <View className="gap-2 self-start mb-1">
+                      <Text
+                        style={{ fontSize: 14 }}
+                        className={`px-2 py-1 rounded-full text-xs ${item.rol === "encargado"
+                            ? "bg-[#FFD700]/20 text-[#003366]"
+                            : "bg-[#405C4D]/10 text-[#405C4D]"
+                          }`}
+                      >
+                        {item.rol === "encargado" ? "Encargado" : "Operario"}
+                      </Text>
+                    </View>
+
+                    <Text
+                      style={{ fontSize: 15 }}
+                      numberOfLines={1}
+                      className="text-[#405C4D] text-xs "
+                    >
+                      {item.obraAsignada || "Sin asignar"}
                     </Text>
                   </View>
-
-                  <Text
-                    style={{ fontSize: 15 }}
-                    numberOfLines={1}
-                    className="text-[#405C4D] text-xs "
-                  >
-                    {empleado.obraAsignada || "Sin asignar"}
-                  </Text>
+                  {/* Arrow */}
+                  <Icons.arrowRight size={18} color={"#405C4D"} />
                 </View>
-                {/* Arrow */}
-                <Icons.arrowRight size={18} color={"#405C4D"} />
-              </View>
-            </TouchableOpacity>
-          ))}
+              </TouchableOpacity>
+            )}
+            keyExtractor={(item) => item.id}
+          />
 
           {empleados.length === 0 && (
             <View className=" py-12">
@@ -274,149 +269,176 @@ export default function EmployeeView() {
         {/* Boton de Invitar empleado */}
         {/* </View> */}
         {/* modal para la invitación de empleado */}
+          <ModalEmployee visible={visible} hideModal={hideModal} setVisible={setVisible} />
 
-        <Modal
-          animationType="slide"
-          // transparent={true}
-          backdropColor="#504f4f75"
-          visible={visible}
-          onRequestClose={() => {
-            hideModal();
-          }}
-          // ----------
-          // contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
-        >
-          <View className="flex-1 items-center justify-center">
-            <View className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl">
-              {/* Header del modal */}
-              <View className="flex-row items-center justify-between mb-5">
-                <Text style={{ fontSize: 18 }} className="text-[#003366]">
-                  Invitar empleados
-                </Text>
-                <Button buttonColor="#FFD700" onPress={() => setVisible(false)}>
-                  <Icons.close size={18} color={"#003366"} />
-                </Button>
-              </View>
-
-              <Text style={{ fontSize: 14 }} className="text-[#405C4D] mb-6">
-                Compartí estos links de invitación según el rol del empleado
-              </Text>
-
-              {/* Link para Encargados */}
-              <View className="mb-1">
-                <View className="flex-row items-center gap-2 mb-2">
-                  <View className="w-2 h-2 rounded-full bg-[#FFD700]" />
-                  <Text style={{ fontSize: 14 }} className="text-[#003366]">
-                    Encargado
-                  </Text>
-                </View>
-                <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#405C4D] mb-1"
-                  >
-                    Link de invitación
-                  </Text>
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#003366]  mb-3"
-                  >
-                    https://localhost:8709/invitacion/encargado?key=
-                    {encargadoKey}
-                  </Text>
-                  <View className="items-stretch">
-                    <View className=" bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#405C4D] mb-0.5"
-                      >
-                        Key de acceso
-                      </Text>
-                      <Text style={{ fontSize: 13 }} className="text-[#003366]">
-                        {encargadoKey}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Button
-                  onPress={() => {}}
-                  textColor="#003366"
-                  buttonColor="#FFD700"
-                  labelStyle={{ fontSize: 14 }}
-                >
-                  Copiar link completo
-                </Button>
-              </View>
-
-              {/* Divider */}
-              <View className="h-px bg-[#E7D77B] my-5" />
-
-              {/* Link para Operarios */}
-              <View>
-                <View className="flex-row items-center gap-2 mb-2">
-                  <View className="w-2 h-2 rounded-full bg-[#405C4D]" />
-                  <Text style={{ fontSize: 14 }} className="text-[#003366] ">
-                    Operario
-                  </Text>
-                </View>
-                <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#405C4D]  mb-1"
-                  >
-                    Link de invitación
-                  </Text>
-                  <Text
-                    style={{ fontSize: 13 }}
-                    className="text-[#003366]  mb-3"
-                  >
-                    https://localhost:8709/invitacion/operario?key={operarioKey}
-                  </Text>
-                  <View className="items-stretch">
-                    <View className="bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#405C4D]  mb-0.5"
-                      >
-                        Key de acceso
-                      </Text>
-                      <Text
-                        style={{ fontSize: 13 }}
-                        className="text-[#003366] "
-                      >
-                        {operarioKey}
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <Button
-                  onPress={() => {}}
-                  textColor="#003366"
-                  buttonColor="#FFD700"
-                  labelStyle={{ fontSize: 14 }}
-                >
-                  Copiar link completo
-                </Button>
-              </View>
-            </View>
-          </View>
-        </Modal>
       </KeyboardLayout>
-      <Button
-        icon={() => <Icons.userPlus size={16} color={"#003366"} />}
-        style={{
+      <Surface style={{
           position: "relative",
-          padding: 5,
           bottom: 20,
-          backgroundColor: "#FFD700",
           opacity: visible ? 0 : 1,
-        }}
-        disabled={visible}
-        onPress={showModal}
-        textColor="#003366"
-      >
-        Invitar Empleados
-      </Button>
+          width: "94%",
+          marginHorizontal: "3%",
+          borderRadius: 20,
+        }}> 
+        <Button
+          icon={() => <Icons.userPlus size={18} color={"#003366"} />}
+          style={{
+            backgroundColor: "#FFD700",
+            paddingVertical: 6,
+          }}
+          disabled={visible}
+          onPress={showModal}
+          textColor="#003366"
+          labelStyle={{ fontSize: 15 }}
+        >
+          Invitar Empleados
+        </Button>
+      </Surface>
     </ScreenLayout>
   );
+}
+
+/* export function FlatListCustom({ data, renderItem, ...props }) {
+  <FlatList
+    data={data}
+    renderItem={renderItem}
+    keyExtractor={(item) => item.id}
+    {...props}
+  />;
+} */
+
+export function ModalEmployee({ visible, hideModal, setVisible }) {
+
+  // Generar keys únicas para cada tipo de invitación
+  const encargadoKey = "64a6s54d6a5s4d6as54d";
+  const operarioKey = "asjndas4442145a5sd";
+
+  return (
+    <Modal
+      animationType="slide"
+      // transparent={true}
+      backdropColor="#504f4f75"
+      visible={visible}
+      onRequestClose={() => {
+        hideModal();
+      }}
+    // ----------
+    // contentContainerStyle={{ backgroundColor: "white", padding: 20 }}
+    >
+      <View className="flex-1 items-center justify-center">
+        <View className="bg-white rounded-3xl p-6 w-full max-w-md shadow-2xl">
+          {/* Header del modal */}
+          <View className="flex-row items-center justify-between mb-5">
+            <Text style={{ fontSize: 18 }} className="text-[#003366]">
+              Invitar empleados
+            </Text>
+            <Button buttonColor="#FFD700" onPress={() => setVisible(false)}>
+              <Icons.close size={18} color={"#003366"} />
+            </Button>
+          </View>
+
+          <Text style={{ fontSize: 14 }} className="text-[#405C4D] mb-6">
+            Compartí estos links de invitación según el rol del empleado
+          </Text>
+
+          {/* Link para Encargados */}
+          <View className="mb-1">
+            <View className="flex-row items-center gap-2 mb-2">
+              <View className="w-2 h-2 rounded-full bg-[#FFD700]" />
+              <Text style={{ fontSize: 14 }} className="text-[#003366]">
+                Encargado
+              </Text>
+            </View>
+            <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#405C4D] mb-1"
+              >
+                Link de invitación
+              </Text>
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#003366]  mb-3"
+              >
+                https://localhost:8709/invitacion/encargado?key=
+                {encargadoKey}
+              </Text>
+              <View className="items-stretch">
+                <View className=" bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#405C4D] mb-0.5"
+                  >
+                    Key de acceso
+                  </Text>
+                  <Text style={{ fontSize: 13 }} className="text-[#003366]">
+                    {encargadoKey}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Button
+              onPress={() => { }}
+              textColor="#003366"
+              buttonColor="#FFD700"
+              labelStyle={{ fontSize: 14 }}
+            >
+              Copiar link completo
+            </Button>
+          </View>
+
+          {/* Divider */}
+          <View className="h-px bg-[#E7D77B] my-5" />
+
+          {/* Link para Operarios */}
+          <View>
+            <View className="flex-row items-center gap-2 mb-2">
+              <View className="w-2 h-2 rounded-full bg-[#405C4D]" />
+              <Text style={{ fontSize: 14 }} className="text-[#003366] ">
+                Operario
+              </Text>
+            </View>
+            <View className="bg-[#F9F7F0] rounded-xl p-4 mb-2">
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#405C4D]  mb-1"
+              >
+                Link de invitación
+              </Text>
+              <Text
+                style={{ fontSize: 13 }}
+                className="text-[#003366]  mb-3"
+              >
+                https://localhost:8709/invitacion/operario?key={operarioKey}
+              </Text>
+              <View className="items-stretch">
+                <View className="bg-white rounded-lg px-3 py-2 border border-[#E7D77B]">
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#405C4D]  mb-0.5"
+                  >
+                    Key de acceso
+                  </Text>
+                  <Text
+                    style={{ fontSize: 13 }}
+                    className="text-[#003366] "
+                  >
+                    {operarioKey}
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Button
+              onPress={() => { }}
+              textColor="#003366"
+              buttonColor="#FFD700"
+              labelStyle={{ fontSize: 14 }}
+            >
+              Copiar link completo
+            </Button>
+          </View>
+        </View>
+      </View>
+    </Modal>
+  )
 }
