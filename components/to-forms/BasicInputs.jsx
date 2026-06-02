@@ -6,6 +6,7 @@ export default function BasicInputs({
   leftIcon,
   placeholder,
   label,
+  width,
   ...props
 }) {
   return (
@@ -22,7 +23,7 @@ export default function BasicInputs({
       outlineColor="#c7b75b"
       activeOutlineColor="#FFD700"
       outlineStyle={{ borderRadius: 14 }}
-      style={{ backgroundColor: "white", width: "100%" }}
+      style={{ backgroundColor: "white", width: width || "100%" }}
     />
   );
 }
