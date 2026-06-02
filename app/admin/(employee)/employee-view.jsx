@@ -132,7 +132,7 @@ export default function EmployeeView() {
 
       {/* <View className="flex-1 gap-2 px-2 py-2 "> */}
       {/* Buscador y filtros */}
-      <View className="mb-4 gap-5 py-2">
+      <View className="mb-4 gap-5 py-2  px-[4%]">
         {/* Buscador */}
         <BasicInputs
           value={searchTerm}
@@ -148,7 +148,7 @@ export default function EmployeeView() {
             flexDirection: "row",
             height: 50,
           }}
-          className="gap-2 justify-center content-center items-center"
+          className=" justify-between items-center"
         >
           {/* Filtro por obra */}
           <Surface
@@ -199,11 +199,11 @@ export default function EmployeeView() {
 
       <KeyboardLayout>
         {/* Lista de empleados */}
-        <View className="space-y-3 mb-7 gap-3">
+        <View className="space-y-3 mb-7 gap-3  px-[4%]">
           <FlatList
             data={empleados}
             renderItem={({ item }) => (
-              <TouchableOpacity className="w-full bg-white rounded-2xl p-4 border border-[#E7D77B]/40">
+              <TouchableOpacity className="w-full bg-white rounded-2xl p-4 border border-light-yellow my-2">
                 <View className="flex-row items-center gap-3">
                   {/* Avatar */}
                   <View className="w-12 h-12 flex items-center justify-center shrink-0">
@@ -272,21 +272,28 @@ export default function EmployeeView() {
           <ModalEmployee visible={visible} hideModal={hideModal} setVisible={setVisible} />
 
       </KeyboardLayout>
-      <Button
-        icon={() => <Icons.userPlus size={16} color={"#003366"} />}
-        style={{
+      <Surface style={{
           position: "relative",
-          padding: 5,
           bottom: 20,
-          backgroundColor: "#FFD700",
           opacity: visible ? 0 : 1,
-        }}
-        disabled={visible}
-        onPress={showModal}
-        textColor="#003366"
-      >
-        Invitar Empleados
-      </Button>
+          width: "94%",
+          marginHorizontal: "3%",
+          borderRadius: 20,
+        }}> 
+        <Button
+          icon={() => <Icons.userPlus size={18} color={"#003366"} />}
+          style={{
+            backgroundColor: "#FFD700",
+            paddingVertical: 6,
+          }}
+          disabled={visible}
+          onPress={showModal}
+          textColor="#003366"
+          labelStyle={{ fontSize: 15 }}
+        >
+          Invitar Empleados
+        </Button>
+      </Surface>
     </ScreenLayout>
   );
 }
