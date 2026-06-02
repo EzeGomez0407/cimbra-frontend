@@ -267,6 +267,7 @@ function SearchBar({
       }}
     >
       <BasicInputs
+        width="60%"
         value={search}
         onChangeText={(text) => setSearch(text)}
         leftIcon={<Icons.magnifyingGlass size={16} color={"#FFD700"} />}
