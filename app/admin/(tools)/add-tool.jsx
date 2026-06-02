@@ -32,25 +32,16 @@ export default function AddTool() {
           ),
         }}
       />
-      <KeyboardLayout>
-        <View className="w-full items-center">
-          <Surface
-            style={{
-              borderRadius: 15,
-              marginTop: 20,
-              backgroundColor: "white",
-              padding: 25,
-              gap: 25,
-              width: "92%",
-            }}
-          >
+        <View className="w-full px-[4%] items-center gap-3 pt-5">
             <BasicInputs
               label={"Nombre de la herramienta"}
               placeholder={"Ej: Taladro Percutor Bosch"}
               leftIcon={<Icons.frenchKey size="18" color="#225599" />}
+              labelStyle={{ color: "#225599" }}
             />
-            <View>
-              <Text className="text-placeholder mb-2 ml-1">Estado</Text>
+            <View className="w-full">
+            {/* Selector de Estado */}
+              <Text className="text-placeholder mb-1 ml-1">Estado</Text>
               <Surface
                 style={{
                   borderRadius: 15,
@@ -72,10 +63,11 @@ export default function AddTool() {
                 </Picker>
               </Surface>
             </View>
-            <View>
-              <Text className="text-placeholder mb-2 ml-1">Categoría</Text>
+            <View className="w-full">
+              {/* Selector de categoria */}
+              <Text className="text-placeholder mb-1 ml-1">Categoría</Text>
               <View className="flex-row gap-2 justify-between">
-                <Surface style={{ borderRadius: 15 }} className="w-[45%]">
+                <Surface style={{ borderRadius: 15, width: "47%" }} >
                   <Button
                     onPress={() => console.log("Agregar herramienta")}
                     mode="contained"
@@ -89,7 +81,7 @@ export default function AddTool() {
                   </Button>
                 </Surface>
 
-                <Surface style={{ borderRadius: 15 }} className="w-[45%]">
+                <Surface style={{ borderRadius: 15, width: "47%" }} >
                   <Button
                     onPress={() => console.log("Agregar herramienta")}
                     mode="contained"
@@ -106,8 +98,8 @@ export default function AddTool() {
             </View>
 
             {/* ---------SELECTOR DE UBICACION-------------- */}
-            <View>
-              <Text className="text-placeholder mb-2 ml-1">Ubicación</Text>
+            <View className="w-[100%]">
+              <Text className="text-placeholder mb-1 ml-1">Ubicación</Text>
               <Surface
                 style={{
                   borderRadius: 15,
@@ -131,8 +123,8 @@ export default function AddTool() {
               </Surface>
             </View>
             {/* ----------SELECTOR DE ENCARGADO----------- */}
-            <View>
-              <Text className="text-placeholder mb-2 ml-1">
+            <View className="w-[100%]">
+              <Text className="text-placeholder mb-1 ml-1">
                 Encargado (opcional)
               </Text>
               <Surface
@@ -157,9 +149,8 @@ export default function AddTool() {
                 </Picker>
               </Surface>
             </View>
-          </Surface>
           {/* -----------bOTON AGREGAR HERRAMIENTA--------------- */}
-          <Surface style={{ borderRadius: 15 }} className="mt-5 w-[93%]">
+          <Surface style={{ borderRadius: 15, width: "100%", marginTop: 10 }} >
             <Button
               onPress={() => {
                 console.log("Agregar herramienta");
@@ -175,7 +166,6 @@ export default function AddTool() {
             </Button>
           </Surface>
         </View>
-      </KeyboardLayout>
     </ScreenLayout>
   );
 }
