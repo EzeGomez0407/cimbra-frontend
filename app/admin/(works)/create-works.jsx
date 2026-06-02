@@ -17,8 +17,12 @@ import KeyboardLayout from "../../../components/layout/KeyboardLayout";
 import BasicInputs from "../../../components/to-forms/BasicInputs";
 
 import { Icons } from "../../../assets/icons";
+import { Picker } from "@react-native-picker/picker";
 
 export default function CreateWorks() {
+  /* estados para el modal de invitacion de empleado */
+  const [visible, setVisible] = useState(false);
+
   //estados para el formulario
   const [form, setForm] = useState({
     name: "",
@@ -28,7 +32,6 @@ export default function CreateWorks() {
   });
 
   const Managers = [
-    { id: null, name: "Sin asignar" },
     { id: 1, name: "Roberto Sánchez" },
     { id: 2, name: "María Gonzáles" },
     { id: 3, name: "Carlos Ramirez" },
@@ -62,7 +65,6 @@ export default function CreateWorks() {
   const [filter, setFilter] = useState("Todas");
 
   const filters = [
-    { id: "all", label: "Todas" },
     { id: "electric", label: "Eléctrica" },
     { id: "manual", label: "Manual" },
   ];
@@ -96,53 +98,53 @@ export default function CreateWorks() {
   return (
     <PaperProvider>
       <ScreenLayout>
-        <KeyboardLayout>
-          <Stack.Screen
-            options={{
-              headerStyle: {
-                backgroundColor: "#225599",
-                color: "#fff",
-              },
-              headerLeft: () => (
-                <View className="py-2 pt-5 gap-3 flex-row items-center">
-                  <View className="self-start p-3 bg-[#FFD700] rounded-2xl mb-2">
-                    <Icons.building size={24} color="#225599" />
-                  </View>
-                  <Text className="text-xl text-[#c7c77b]">
-                    {" "}
-                    Crear Nueva Obra
-                  </Text>
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: "#225599",
+              color: "#fff",
+            },
+            headerLeft: () => (
+              <View className="py-2 pt-5 gap-3 flex-row items-center">
+                <View className="self-start p-3 bg-[#FFD700] rounded-2xl mb-2">
+                  <Icons.building size={24} color="#225599" />
                 </View>
-              ),
-            }}
+                <Text className="text-xl text-[#c7c77b]">
+                  {" "}
+                  Crear Nueva Obra
+                </Text>
+              </View>
+            ),
+          }}
+        />
+
+        <View className="gap-4 flex-1  mx-3 mt-5   pb-3">
+          <WorkForm
+            form={form}
+            setForm={setForm}
+            expanded={expanded}
+            handlePress={handlePress}
+            Managers={Managers}
           />
 
-          <View className="gap-4 mx-3 mt-5  pb-12">
-            <WorkForm
-              form={form}
-              setForm={setForm}
-              expanded={expanded}
-              handlePress={handlePress}
-              Managers={Managers}
+          <View style={{ marginHorizontal: 5 }} className="flex-1">
+            <Text
+              style={{ fontSize: 18, fontWeight: "bold", color: "#003366" }}
+            >
+              Herramientas del almacenamiento
+            </Text>
+
+            <SearchBar
+              filter={filter}
+              setFilter={setFilter}
+              filters={filters}
+              toolsExpanded={toolsExpanded}
+              setToolsExpanded={setToolsExpanded}
+              search={search}
+              setSearch={setSearch}
             />
 
-            <View style={{ marginHorizontal: 5 }}>
-              <Text
-                style={{ fontSize: 18, fontWeight: "bold", color: "#003366" }}
-              >
-                Herramientas del almacenamiento
-              </Text>
-
-              <SearchBar
-                filter={filter}
-                setFilter={setFilter}
-                filters={filters}
-                toolsExpanded={toolsExpanded}
-                setToolsExpanded={setToolsExpanded}
-                search={search}
-                setSearch={setSearch}
-              />
-
+            <KeyboardLayout>
               {filteredTools.length == 0 ? (
                 <Text>No se encontraron herramientas</Text>
               ) : (
@@ -150,25 +152,27 @@ export default function CreateWorks() {
                   <ToolItem key={item.id} item={item} onChange={updateQty} />
                 ))
               )}
-            </View>
-            {/* btn guardar obra */}
-            <Portal>
-              <FAB
-                icon="plus"
-                label="Crear obra"
-                onPress={() => console.log("crear")}
-                style={{
-                  position: "absolute",
-                  left: 15,
-                  right: 15,
-                  bottom: 70,
-                  backgroundColor: "#FFD700",
-                }}
-                color="#003366"
-              />
-            </Portal>
+            </KeyboardLayout>
           </View>
-        </KeyboardLayout>
+
+          {/* btn guardar obra */}
+
+          <Button
+            icon={() => <Icons.plus size={16} color={"#003366"} />}
+            onPress={() => console.log("crear")}
+            style={{
+              position: "relative",
+              padding: 5,
+              bottom: 0,
+              backgroundColor: "#FFD700",
+              opacity: visible ? 0 : 1,
+            }}
+            disabled={visible}
+            textColor="#003366"
+          >
+            Crear obra
+          </Button>
+        </View>
       </ScreenLayout>
     </PaperProvider>
   );
@@ -207,64 +211,37 @@ function WorkForm({ form, setForm, expanded, handlePress, Managers }) {
       />
 
       {/* Encargado */}
-      <List.Section
-        title="Encargado (opcional)"
-        titleStyle={{
-          color: "#003366",
-          fontWeight: "500",
+      <Text className="text-lg font-bold text-[#003366]">
+        Encargado (opcional)
+      </Text>
+      <Surface
+        style={{
+          borderRadius: 15,
+          width: "100%",
+          outlineColor: "#c7b75b",
+          outlineWidth: 1,
+          backgroundColor: "#fff",
         }}
       >
-        <List.Accordion
-          style={{
-            backgroundColor: "#fff",
-            borderRadius: 12,
-            borderWidth: 1,
-            borderColor: "#c7b75b",
+        <Picker
+          selectedValue={form.manager?.id}
+          onValueChange={(value) => {
+            const manager = Managers.find((m) => m.id === value);
+            setForm((prev) => ({ ...prev, manager }));
           }}
-          contentStyle={{
-            borderRadius: 12,
-          }}
-          title={form.manager?.name || "Sin asignar"}
-          titleStyle={{
-            color: "#003366",
-            fontWeight: "500",
-          }}
-          left={(props) => (
-            <View
-              style={{
-                padding: 8,
-                borderRadius: 8,
-                marginLeft: 10,
-              }}
-            >
-              <Icons.user size={18} color="#FFD700" />
-            </View>
-          )}
-          theme={{
-            colors: {
-              primary: "#FFD700", // flecha
-            },
-          }}
-          expanded={expanded}
-          onPress={handlePress}
+          style={{ color: "#225599" }}
         >
+          <Picker.Item label="Sin asignar" value="null" />
+
           {Managers.map((manager) => (
-            <List.Item
-              key={manager.id ?? "none"}
-              title={manager.name}
-              titleStyle={{ color: "#003366" }}
-              style={{
-                backgroundColor:
-                  form.manager?.id === manager.id ? "#FFF6CC" : "#fefbf2",
-              }}
-              onPress={() => {
-                setForm((prev) => ({ ...prev, manager }));
-                handlePress();
-              }}
+            <Picker.Item
+              label={manager.name}
+              value={manager.id}
+              key={manager.id}
             />
           ))}
-        </List.Accordion>
-      </List.Section>
+        </Picker>
+      </Surface>
     </Surface>
   );
 }
@@ -280,6 +257,7 @@ function SearchBar({
 }) {
   return (
     <View
+      className=""
       style={{
         flexDirection: "row",
         gap: 10,
@@ -294,46 +272,33 @@ function SearchBar({
         leftIcon={<Icons.magnifyingGlass size={16} color={"#FFD700"} />}
         placeholder={"Ej: Taladro percutor"}
         label={"Buscar herramientas..."}
-        style={{ flex: 1, height: 50 }}
       />
-
-      <Menu
-        visible={toolsExpanded}
-        onDismiss={() => setToolsExpanded(false)}
-        anchor={
-          <Button
-            mode="outlined"
-            icon={() => <Icons.filter size={16} color={"#FFD700"} />}
-            style={{
-              borderColor: "#c7b75b",
-              backgroundColor: "#fff",
-              borderRadius: 12,
-              height: 50,
-              justifyContent: "center",
-              gap: 15,
-            }}
-            textColor="#003366"
-            onPress={() => setToolsExpanded(true)}
-          >
-            {filter || "Filtrar"}
-          </Button>
-        }
+ 
+      <Surface
         style={{
-          marginTop: -50,
+          borderRadius: 15,
+          width: "40%",
+          outlineColor: "#c7b75b",
+          outlineWidth: 1,
+          backgroundColor: "#fff",
         }}
       >
-        {filters.map((item) => (
-          <Menu.Item
-            key={item.id}
-            onPress={() => {
-              setFilter(item.label);
-              setSearch("");
-              setToolsExpanded(false);
-            }}
-            title={item.label}
-          />
-        ))}
-      </Menu>
+        <Picker
+          selectedValue={filter}
+          onValueChange={(value) => setFilter(value)}
+          style={{ color: "#225599" }}
+        >
+          <Picker.Item label="Todas" value="all" />
+
+          {filters.map((filter) => (
+            <Picker.Item
+              label={filter.label}
+              value={filter.id}
+              key={filter.id}
+            />
+          ))}
+        </Picker>
+      </Surface>
     </View>
   );
 }
