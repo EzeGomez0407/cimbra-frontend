@@ -214,7 +214,7 @@ export function QuickCard({ title, icon, bg, color, ...props }) {
         }}
         style={{ borderRadius: 15, width: "100%", height: "100%" }}
       >
-        <View className="flex-column justify-center items-center gap-2">
+        <View className="flex-column w-full justify-center items-center gap-2">
           <View
             style={{ backgroundColor: bg, borderRadius: 15 }}
             className="self p-4"
